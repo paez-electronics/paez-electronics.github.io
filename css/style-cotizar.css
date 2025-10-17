@@ -192,7 +192,7 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
-/* INCLUIDO: Oculta el botón de Cotizar móvil en escritorio */
+/* Oculta el botón de Cotizar móvil en escritorio */
 .nav-cotizar-item-movil {
     display: none;	
 }
@@ -425,13 +425,10 @@ footer .container {
     
     /* Configuración del menú desplegable */
     .navegacion-principal {
-        display: block; 
-        
+        /* ESTAS SON LAS REGLAS CRÍTICAS PARA EL DESPLAZAMIENTO */
         position: fixed;
         top: 65px; 
-        
-        /* OCULTO: Corrección de alineación y deslizamiento */
-        left: 100vw; 
+        left: 100vw; /* Inicia fuera de la pantalla */
         
         width: 100vw; 
         height: 100vh;	
@@ -440,9 +437,12 @@ footer .container {
         transition: left 0.4s ease-in-out; 
         z-index: 999;	
         overflow-y: auto;	
+        
+        /* Asegura que el contenedor de navegación se muestre, no solo su contenido */
+        display: block; 
     }
 
-    /* VISIBLE: Corrección de alineación y deslizamiento */
+    /* VISIBLE: Desliza el menú a la izquierda */
     .navegacion-principal.menu-activo {
         left: 0; 
     }
