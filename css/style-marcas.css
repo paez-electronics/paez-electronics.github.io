@@ -47,7 +47,7 @@ body {
     color: var(--color-terciario);	
     background-color: transparent;	
     
-    /* ¡CORRECCIÓN FINAL! Esto evita el scroll horizontal y el desplazamiento lateral */
+    /* ¡CORRECCIÓN CRÍTICA! Esto evita el scroll horizontal (y el desplazamiento) */
     overflow-x: hidden; 
 }
 
