@@ -95,7 +95,7 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil { /* Añadido .btn-cotizar-nav-movil */
+.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil { 
     display: inline-block;
     padding: 16px 40px;	
     border-radius: 6px;	
@@ -426,6 +426,11 @@ footer .container {
     
     .encabezado-principal {
         padding: 15px 20px;
+    }
+
+    /* CORRECCIÓN: Ajuste el tamaño del logo para móviles */
+    .logo-img {
+        max-height: 35px; 
     }
     
     /* Mostrar el toggle y Ocultar botón de escritorio */
