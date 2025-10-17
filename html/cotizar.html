@@ -19,10 +19,21 @@
         <a href="../index.html" class="logo">
             <img src="../img/logo-blanco.png" alt="Paez Electronics" class="logo-img"> 
         </a> 
+        
+        <button class="menu-toggle" aria-label="Abrir Menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
         <nav class="navegacion-principal">
             <ul>
                 <li><a href="marcas.html">Marcas</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
+                
+                <li class="nav-cotizar-item-movil">
+                    <a href="cotizar.html" class="btn-cotizar-nav-movil active-btn-movil">COTIZAR</a>
+                </li>
             </ul>
         </nav>
         <a href="cotizar.html" class="btn-cotizar active-btn">Cotizar</a>
@@ -37,7 +48,7 @@
         
         <div class="contenedor-formulario">
            <form class="formulario-cotizar" id="cotizacionForm" action="https://formspree.io/f/xpwykrne" method="POST"> 
-               
+                
            <fieldset class="grupo-campo">
                     <legend>Datos de Contacto y Empresa</legend>
                     <div class="grilla-campos col-2">
@@ -128,14 +139,13 @@
     </footer>
 
     <script>
-        // Obtiene el formulario por su ID
+        // Script de Formspree
         const form = document.getElementById('cotizacionForm');
 
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Detiene el envío normal del formulario
+            e.preventDefault(); 
             const data = new FormData(form);
             
-            // Envía los datos a Formspree asíncronamente
             fetch(form.action, {
                 method: form.method,
                 body: data,
@@ -145,9 +155,6 @@
             })
             .then(response => {
                 if (response.ok) {
-                    // Si Formspree devuelve una respuesta exitosa,
-                    // forzamos la redirección a tu archivo local.
-                    // Esto funcionará sin un dominio/servidor local.
                     window.location.href = "agradecimiento.html"; 
                 } else {
                     response.json().then(data => {
@@ -157,6 +164,19 @@
             })
             .catch(error => {
                 alert('Oops! Hubo un error de conexión. Intente más tarde.');
+            });
+        });
+
+        // INCLUIDO: Script para la funcionalidad del menú móvil
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navPrincipal = document.querySelector('.navegacion-principal');
+            const body = document.body;
+
+            menuToggle.addEventListener('click', function() {
+                navPrincipal.classList.toggle('menu-activo');
+                menuToggle.classList.toggle('menu-activo'); 
+                body.classList.toggle('no-scroll'); 
             });
         });
     </script>

@@ -47,6 +47,13 @@ body {
     color: var(--color-terciario); 
     background-color: transparent; 
     scroll-behavior: smooth; 
+    /* INCLUIDO: Corrección para evitar desplazamiento horizontal */
+    overflow-x: hidden; 
+}
+
+/* INCLUIDO: Clase para bloquear el scroll vertical al abrir el menú */
+.no-scroll {
+    overflow: hidden;
 }
 
 section, footer {
@@ -89,7 +96,7 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-.btn-cotizar, .btn-primario, .btn-secundario {
+.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil { 
     display: inline-block;
     padding: 16px 40px; 
     border-radius: 6px; 
@@ -102,19 +109,19 @@ a {
     letter-spacing: 1px;
 }
 
-.btn-cotizar {
+.btn-cotizar, .btn-cotizar-nav-movil { 
     background: var(--color-secundario);
     color: var(--color-terciario);
     box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
 }
 
-.btn-cotizar.active-btn {
+.btn-cotizar.active-btn, .btn-cotizar-nav-movil.active-btn-movil {
     background: var(--color-primario); 
     color: var(--color-terciario); 
     box-shadow: 0 4px 10px rgba(31, 69, 134, 0.6); 
 }
 
-.btn-cotizar:hover {
+.btn-cotizar:hover, .btn-cotizar-nav-movil:hover {
     background: var(--color-primario); 
     color: var(--color-terciario); 
     transform: translateY(-2px);
@@ -185,6 +192,41 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
+/* INCLUIDO: Oculta el botón de Cotizar móvil en escritorio */
+.nav-cotizar-item-movil {
+    display: none;	
+}
+
+/* ========================================================= */
+/* 1.1 ÍCONO DE MENÚ (HAMBURGUESA) - Estilos Base */
+/* ========================================================= */
+.menu-toggle {
+    display: none; /* Oculto por defecto en escritorio */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;	
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-secundario);
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.menu-activo .bar:nth-child(2) {
+    opacity: 0;	
+}
+.menu-toggle.menu-activo .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);	
+}
+.menu-toggle.menu-activo .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);	
+}
 
 /* ========================================================= */
 /* 3. SECCIÓN COTIZACIÓN (Formulario Detallado) */
@@ -358,7 +400,7 @@ footer .container {
 }
 
 /* ========================================================= */
-/* RESPONSIVE BÁSICO (Móviles) */
+/* RESPONSIVE AJUSTADO (Móviles) */
 /* ========================================================= */
 
 @media (max-width: 900px) {
@@ -366,10 +408,80 @@ footer .container {
     .encabezado-principal {
         padding: 15px 20px;
     }
-    .navegacion-principal {
-        display: none; 
+
+    /* CORRECCIÓN DE LOGO */
+    .logo-img {
+        max-height: 35px; /* Tamaño reducido para móvil */
+    }
+    
+    /* Mostrar el toggle y Ocultar botón de escritorio */
+    .menu-toggle {
+        display: block;
     }
 
+    .btn-cotizar {
+        display: none; /* Ocultar el botón Cotizar de escritorio */
+    }
+    
+    /* Configuración del menú desplegable */
+    .navegacion-principal {
+        display: block; 
+        
+        position: fixed;
+        top: 65px; 
+        
+        /* OCULTO: Corrección de alineación y deslizamiento */
+        left: 100vw; 
+        
+        width: 100vw; 
+        height: 100vh;	
+        background: var(--fondo-oscuro-base);	
+        
+        transition: left 0.4s ease-in-out; 
+        z-index: 999;	
+        overflow-y: auto;	
+    }
+
+    /* VISIBLE: Corrección de alineación y deslizamiento */
+    .navegacion-principal.menu-activo {
+        left: 0; 
+    }
+    
+    .navegacion-principal ul {
+        flex-direction: column;	
+        padding: 20px 20px; 
+        align-items: stretch;
+    }
+    
+    .navegacion-principal ul li a {
+        padding: 18px 25px;	
+        text-align: center;
+        border-bottom: 1px solid var(--fondo-oscuro-superficie);	
+        font-size: 1.1em;
+    }
+
+    .navegacion-principal ul li a:hover, 
+    .navegacion-principal ul li a.active,
+    .navegacion-principal ul li a.active-btn-movil { 
+        border-bottom: none;	
+        background-color: var(--fondo-oscuro-superficie);
+    }
+    
+    /* Mostrar el botón de Cotizar Móvil */
+    .nav-cotizar-item-movil {
+        display: block; 
+        padding: 20px 0;	
+    }
+
+    .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
+        width: 100%;	
+        margin: 0 auto;
+        display: block;
+        padding: 12px 20px;	
+    }
+
+    /* --- Ajustes al formulario --- */
+    
     .seccion-cotizar {
         padding: 40px 0;
     }
