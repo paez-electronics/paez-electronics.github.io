@@ -46,6 +46,9 @@ body {
     line-height: 1.6;
     color: var(--color-terciario);	
     background-color: transparent;	
+    
+    /* ¡CORRECCIÓN FINAL! Esto evita el scroll horizontal y el desplazamiento lateral */
+    overflow-x: hidden; 
 }
 
 /* CLASE PARA BLOQUEAR EL SCROLL EN MÓVIL AL ABRIR EL MENÚ */
@@ -434,14 +437,14 @@ footer .container {
         position: fixed;
         top: 65px;
         
-        /* CORRECCIÓN FINAL: Ocultamos a la derecha del viewport */
+        /* Oculto a la derecha del viewport */
         left: 100vw; 
         
         width: 100vw; 
         height: 100vh;	
         background: var(--fondo-oscuro-base);	
         
-        /* CAMBIO: Usamos la propiedad 'left' para la transición */
+        /* Transición en 'left' */
         transition: left 0.4s ease-in-out; 
         z-index: 999;	
         overflow-y: auto;	
@@ -449,7 +452,7 @@ footer .container {
 
     /* Estado activo, lo trae a la vista */
     .navegacion-principal.menu-activo {
-        /* CORRECCIÓN FINAL: Lo traemos al inicio del viewport */
+        /* Lo trae al inicio del viewport */
         left: 0; 
     }
     
