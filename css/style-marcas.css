@@ -433,26 +433,28 @@ footer .container {
         
         position: fixed;
         top: 65px;
-        right: 0;
-        /* CORRECCIÓN CLAVE: Usamos 100vw para cubrir toda la pantalla */
+        
+        /* CORRECCIÓN FINAL: Ocultamos a la derecha del viewport */
+        left: 100vw; 
+        
         width: 100vw; 
         height: 100vh;	
         background: var(--fondo-oscuro-base);	
         
-        transform: translateX(100%);	
-        transition: transform 0.4s ease-in-out;
+        /* CAMBIO: Usamos la propiedad 'left' para la transición */
+        transition: left 0.4s ease-in-out; 
         z-index: 999;	
         overflow-y: auto;	
     }
 
     /* Estado activo, lo trae a la vista */
     .navegacion-principal.menu-activo {
-        transform: translateX(0);	
+        /* CORRECCIÓN FINAL: Lo traemos al inicio del viewport */
+        left: 0; 
     }
     
     .navegacion-principal ul {
         flex-direction: column;	
-        /* AÑADIDO: Padding lateral para que los enlaces no toquen los bordes */
         padding: 20px 20px; 
         align-items: stretch;
     }
@@ -469,14 +471,12 @@ footer .container {
         background-color: var(--fondo-oscuro-superficie);
     }
     
-    /* Mostrar item de Cotizar Móvil */
     .nav-cotizar-item-movil {
         display: block; 
         padding: 20px 0;	
     }
 
     .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
-        /* USAMOS 100% PARA QUE EL ANCHO SEA CONTROLADO POR EL PADDING DE UL */
         width: 100%;	
         margin: 0 auto;
         display: block;
