@@ -1,0 +1,613 @@
+:root {
+    --color-primario: #1f4586;
+    --color-secundario: #1871ac;
+    --color-terciario: #ffffff;
+    --fondo-oscuro-base: #0e1e3b;
+    --fondo-oscuro-superficie: #142a52;
+    
+    --color-blanco: #ffffff;
+    
+    --textura-fondo: url(../img/fondo.png);
+}
+
+/* ========================================================= */
+/* 0. FONDO FIJO */
+/* ========================================================= */
+
+.fondo-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    
+    background-image: var(--textura-fondo);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* ========================================================= */
+/* BASE & TIPOGRAFÍA */
+/* ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-terciario); 
+    background-color: transparent; 
+}
+
+section, footer {
+    background-color: var(--fondo-oscuro-base); 
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1600px; 
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    color: var(--color-blanco); 
+}
+
+h2 {
+    font-size: 3.2em; 
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--color-terciario); 
+    margin-bottom: 70px; 
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secundario);
+    transition: color 0.3s;
+}
+
+/* ========================================================= */
+/* BOTONES Y CTAs */
+/* ========================================================= */
+
+.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil {
+    display: inline-block;
+    padding: 16px 40px; 
+    border-radius: 6px; 
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ESTILO DEL BOTÓN DE ESCRITORIO Y EL DE MÓVIL */
+.btn-cotizar, .btn-cotizar-nav-movil {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
+}
+
+.btn-cotizar:hover, .btn-cotizar-nav-movil:hover {
+    background: var(--color-primario); 
+    color: var(--color-terciario); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
+}
+
+.btn-primario {
+    background: var(--color-primario);
+    color: var(--color-terciario); 
+    margin-top: 25px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 10px rgba(31, 69, 134, 0.4);
+}
+
+.btn-primario:hover {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 6px 15px rgba(24, 113, 172, 0.6);
+}
+
+.btn-secundario {
+    background: var(--color-secundario);
+    color: var(--fondo-oscuro-base);
+    margin-top: 35px;
+    font-size: 1.1em;
+}
+
+.btn-secundario:hover {
+    background: var(--color-primario);
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* 1. NAVEGACIÓN (ENCABEZADO) */
+/* ========================================================= */
+
+.encabezado-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--fondo-oscuro-base); 
+    box-shadow: 0 2px 5px rgba(31, 69, 134, 0.2); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-img {
+    max-height: 45px; /* Valor original de escritorio */
+    width: auto;
+    display: block;
+}
+
+.navegacion-principal ul {
+    list-style: none;
+    display: flex;
+    align-items: center; 
+    gap: 0; 
+}
+
+.navegacion-principal ul li a {
+    padding: 12px 18px; 
+    display: block;
+    color: var(--color-terciario); 
+    font-weight: 500;
+    white-space: nowrap; 
+    transition: color 0.3s;
+}
+
+.navegacion-principal ul li a:hover, .navegacion-principal ul li a.active {
+    color: var(--color-secundario);
+    border-bottom: 3px solid var(--color-secundario); 
+}
+
+/* OCULTAMOS EL ITEM DE COTIZAR MÓVIL EN ESCRITORIO */
+.nav-cotizar-item-movil {
+    display: none; 
+}
+
+
+/* ========================================================= */
+/* 1.1 ÍCONO DE MENÚ (HAMBURGUESA) - Estilos Base */
+/* ========================================================= */
+.menu-toggle {
+    display: none; /* Oculto por defecto en escritorio */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; 
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-secundario);
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* ========================================================= */
+/* 2. PORTADA */
+/* ========================================================= */
+
+.seccion-portada {
+    background: url(../img/portada-inicio.jpg) no-repeat center center/cover; 
+    min-height: 700px; 
+    display: flex;
+    align-items: center;
+    color: var(--color-terciario);
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7); 
+    position: relative;
+    padding: 0;
+    border-bottom: 3px solid var(--color-primario); 
+}
+
+.seccion-portada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(14, 30, 59, 0.75); 
+    z-index: 1;
+}
+
+.contenido-portada {
+    padding: 0 50px;
+    z-index: 2;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.contenido-portada h1 {
+    font-size: 5em; 
+    margin-bottom: 20px;
+    color: var(--color-terciario); 
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.contenido-portada p {
+    font-size: 1.6em; 
+    font-weight: 300;
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* 3. MARCAS ALIADAS */
+/* ========================================================= */
+
+.seccion-marcas {
+    padding: 100px 0;
+    text-align: center;
+    background: none;
+}
+
+.marcas-grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 20px;
+    margin-top: 40px;
+    align-items: center;
+    justify-items: center;
+}
+
+.logo-marca {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    background: var(--fondo-oscuro-superficie); 
+    border: 1px solid var(--color-primario); 
+    border-radius: 8px;
+    transition: transform 0.3s, border-color 0.3s;
+    height: 160px;
+}
+
+.logo-marca:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-secundario); 
+    box-shadow: 0 5px 15px rgba(24, 113, 172, 0.4);
+}
+
+.logo-marca img {
+    max-height: 40px; 
+    width: auto;
+    filter: brightness(0) invert(1); 
+    transition: filter 0.3s;
+    margin-bottom: 15px;
+}
+
+.logo-marca:hover img {
+    filter: none; 
+}
+
+.logo-marca span {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--color-terciario);
+    text-transform: uppercase;
+}
+
+/* ========================================================= */
+/* 4. SECCIÓN DE COTIZACIÓN (CTA) */
+/* ========================================================= */
+
+.seccion-cta {
+    background: var(--fondo-oscuro-base); 
+    color: var(--color-terciario);
+    padding: 100px 0;
+    text-align: center; 
+}
+
+.contenido-cta h2 {
+    color: var(--color-terciario); 
+    font-size: 3em; 
+}
+
+.contenido-cta p {
+    color: var(--color-blanco); 
+    font-size: 1.4em;
+    font-weight: 300;
+    margin-bottom: 40px; 
+}
+
+/* ========================================================= */
+/* 5. TESTIMONIOS */
+/* ========================================================= */
+
+.seccion-testimonios {
+    padding: 100px 0;
+    background: none; 
+}
+
+.testimonios-grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-testimonio {
+    background: var(--fondo-oscuro-superficie); 
+    padding: 35px;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(14, 30, 59, 0.5);
+    position: relative;
+    border-left: 5px solid var(--color-secundario); 
+    transition: transform 0.3s;
+}
+
+.tarjeta-testimonio:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(14, 30, 59, 0.7);
+    border-left-color: var(--color-primario); 
+}
+
+.tarjeta-testimonio i.fa-quote-left {
+    color: var(--color-primario); 
+    font-size: 2.5em;
+    position: absolute;
+    top: 15px;
+    right: 20px; 
+    opacity: 0.2;
+}
+
+.tarjeta-testimonio p {
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: var(--color-terciario);
+}
+
+.nombre-cliente {
+    font-weight: bold;
+    color: var(--color-primario); 
+    margin-top: 10px;
+    display: block;
+}
+
+.cargo-cliente {
+    font-size: 0.9em;
+    color: var(--color-terciario); 
+}
+
+/* ========================================================= */
+/* 6. PIE DE PÁGINA (FOOTER) */
+/* ========================================================= */
+
+footer {
+    background: var(--fondo-oscuro-base); 
+    color: var(--color-terciario);
+    padding: 50px 0 20px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-primario); 
+}
+
+.pie-info h3 {
+    color: var(--color-terciario);
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.pie-enlaces h4 {
+    color: var(--color-secundario); 
+    margin-bottom: 10px;
+}
+
+.pie-enlaces a {
+    color: var(--color-terciario);
+    display: block;
+    padding: 5px 0;
+}
+
+.pie-enlaces a:hover {
+    color: var(--color-secundario);
+}
+
+.pie-social h4 {
+    color: var(--color-secundario); 
+    margin-bottom: 10px;
+}
+
+.pie-social a {
+    color: var(--color-terciario);
+    font-size: 2em; 
+    margin-right: 20px;
+}
+
+.pie-social a:hover {
+    color: var(--color-secundario);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* RESPONSIVE BÁSICO (Móviles) */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+    
+    .encabezado-principal {
+        padding: 15px 20px;
+    }
+
+    /* === MODIFICACIONES SOLO EN MÓVIL === */
+
+    /* 1. LOGO MÁS PEQUEÑO EN MÓVIL */
+    .logo-img {
+        max-height: 35px; 
+    }
+    
+    /* 2. OCULTAR BOTÓN COTIZAR DE ESCRITORIO */
+    .btn-cotizar {
+        display: none;
+    }
+    
+    /* 3. MOSTRAR ITEM DE COTIZAR MÓVIL Y ESTILIZARLO */
+    .nav-cotizar-item-movil {
+        display: block; /* Hacemos visible el item */
+        padding: 20px 0; 
+    }
+
+    .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
+        width: 90%; 
+        margin: 0 auto;
+        display: block;
+        padding: 12px 20px; 
+    }
+    
+    /* ------------------------------------------------ */
+    /* MENÚ RESPONSIVE: Despliegue de DERECHA a IZQUIERDA */
+    /* ------------------------------------------------ */
+    
+    .menu-toggle {
+        display: block; /* Muestra el botón de hamburguesa en móvil */
+    }
+
+    .navegacion-principal {
+        /* Estado por defecto: Oculto (fuera de pantalla a la DERECHA) */
+        position: fixed;
+        top: 65px; 
+        right: 0; /* Ancla a la derecha */
+        left: auto; /* Desactiva anclaje izquierdo */
+        width: 100%;
+        height: 100vh; 
+        background: var(--fondo-oscuro-base); 
+        
+        /* DESPLIEGUE CLAVE: Comienza 100% fuera de la derecha */
+        transform: translateX(100%); 
+        
+        transition: transform 0.4s ease-in-out;
+        z-index: 999; 
+        overflow-y: auto; 
+    }
+
+    /* Clase que se activa con JavaScript para mostrar el menú */
+    .navegacion-principal.menu-activo {
+        /* Se mueve a la posición 0 (visible) */
+        transform: translateX(0); 
+    }
+
+    .navegacion-principal ul {
+        flex-direction: column; 
+        padding: 20px 0;
+        align-items: stretch;
+    }
+
+    .navegacion-principal ul li a {
+        padding: 18px 25px; 
+        text-align: center;
+        border-bottom: 1px solid var(--fondo-oscuro-superficie); 
+        font-size: 1.1em;
+    }
+
+    .navegacion-principal ul li a:hover, .navegacion-principal ul li a.active {
+        border-bottom: none; 
+        background-color: var(--fondo-oscuro-superficie);
+    }
+
+    /* ------------------------------------------------ */
+    /* Animación de la Hamburguesa a "X" (sin cambios) */
+    /* ------------------------------------------------ */
+    .menu-toggle.menu-activo .bar:nth-child(2) {
+        opacity: 0; 
+    }
+
+    .menu-toggle.menu-activo .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg); 
+    }
+
+    .menu-toggle.menu-activo .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg); 
+    }
+
+    /* ------------------------------------------------ */
+    /* Otros ajustes responsive */
+    /* ------------------------------------------------ */
+    .seccion-portada {
+        min-height: 450px;
+    }
+    
+    .contenido-portada {
+        padding: 0 20px;
+    }
+
+    .contenido-portada h1 {
+        font-size: 2.5em;
+    }
+    
+    .contenido-portada p {
+        font-size: 1.1em;
+    }
+
+    .seccion-marcas, .seccion-testimonios, .seccion-cta {
+        padding: 60px 0;
+    }
+
+    .contenido-cta h2 {
+        font-size: 2em;
+    }
+
+    .testimonios-grilla {
+        grid-template-columns: 1fr;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pie-info, .pie-enlaces, .pie-social {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .pie-enlaces a {
+        text-align: center;
+    }
+    
+    .pie-social a {
+        margin: 0 10px; 
+    }
+}

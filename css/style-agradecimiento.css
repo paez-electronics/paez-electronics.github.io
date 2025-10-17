@@ -1,0 +1,360 @@
+:root {
+    --color-primario: #1f4586;
+    --color-secundario: #1871ac;
+    --color-terciario: #ffffff;
+    --color-claro: #6cbff7; /* Usado para acentos de luz */
+    
+    --fondo-oscuro-base: #0e1e3b;
+    --fondo-oscuro-superficie: #142a52;
+    
+    --color-blanco: #ffffff;
+    
+    --textura-fondo: url(../img/fondo.png);
+}
+
+/* ========================================================= */
+/* 0. FONDO FIJO */
+/* ========================================================= */
+
+.fondo-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    
+    background-image: var(--textura-fondo);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* ========================================================= */
+/* BASE & TIPOGRAFÍA */
+/* ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-terciario); 
+    background-color: transparent; 
+    scroll-behavior: smooth; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+section, footer {
+    background-color: var(--fondo-oscuro-base); 
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    color: var(--color-claro); 
+}
+
+/* Estilo específico para la sección de agradecimiento */
+h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-top: 20px;
+    color: var(--color-terciario); /* Color más fuerte para el título principal */
+}
+
+h2 {
+    font-size: 1.8em;
+    color: var(--color-claro);
+    margin-bottom: 30px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secundario);
+    transition: color 0.3s;
+}
+
+/* ========================================================= */
+/* BOTONES Y CTAs (Replicados de los otros CSS) */
+/* ========================================================= */
+
+.btn-cotizar, .btn-primario, .btn-secundario {
+    display: inline-block;
+    padding: 16px 40px; 
+    border-radius: 6px; 
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cotizar {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
+}
+
+.btn-cotizar:hover {
+    background: var(--color-primario); 
+    color: var(--color-terciario); 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
+}
+
+.btn-primario {
+    background: var(--color-primario);
+    color: var(--color-terciario); 
+    margin-top: 30px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 10px rgba(31, 69, 134, 0.4);
+    display: inline-flex; /* Para alinear el icono con el texto */
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primario.large-btn {
+    padding: 18px 45px;
+    font-size: 1.3em;
+}
+
+.btn-primario:hover {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 6px 15px rgba(24, 113, 172, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ========================================================= */
+/* 1. NAVEGACIÓN (ENCABEZADO) */
+/* ========================================================= */
+
+.encabezado-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--fondo-oscuro-base); 
+    box-shadow: 0 2px 5px rgba(31, 69, 134, 0.2); 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid var(--color-secundario); 
+}
+
+.logo-img {
+    max-height: 45px; 
+    width: auto;
+    display: block;
+}
+
+.navegacion-principal ul {
+    list-style: none;
+    display: flex;
+    align-items: center; 
+    gap: 0; 
+}
+
+.navegacion-principal ul li a {
+    padding: 12px 18px; 
+    display: block;
+    color: var(--color-terciario); 
+    font-weight: 500;
+    white-space: nowrap; 
+    transition: color 0.3s;
+}
+
+.navegacion-principal ul li a:hover {
+    color: var(--color-secundario);
+    border-bottom: 3px solid var(--color-secundario); 
+}
+
+/* ========================================================= */
+/* 3. SECCIÓN AGRADECIMIENTO */
+/* ========================================================= */
+
+.seccion-agradecimiento {
+    flex-grow: 1; /* Ocupa el espacio restante entre header y footer */
+    display: flex;
+    align-items: center; /* Centrado vertical */
+    justify-content: center;
+    padding: 50px 0;
+    background: none;
+}
+
+.contenido-agradecimiento {
+    text-align: center;
+    background: var(--fondo-oscuro-superficie);
+    padding: 60px 40px;
+    border-radius: 12px;
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--color-secundario);
+}
+
+.icono-confirmacion {
+    font-size: 5em;
+    color: #4CAF50; /* Un color verde de éxito */
+    margin-bottom: 20px;
+    animation: bounce 1s ease-in-out;
+}
+
+/* Animación de rebote simple */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.contenido-agradecimiento p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.siguiente-paso {
+    font-weight: 600;
+    color: var(--color-claro);
+    margin-bottom: 10px;
+}
+
+.nota-adicional {
+    font-size: 0.9em;
+    margin-top: 25px;
+    color: var(--color-secundario);
+}
+
+/* ========================================================= */
+/* 6. PIE DE PÁGINA (FOOTER) - Versión COMPLETA */
+/* ========================================================= */
+
+footer {
+    background: var(--fondo-oscuro-base); 
+    color: var(--color-terciario);
+    padding: 50px 0 20px; /* Padding completo */
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-primario); 
+}
+
+.pie-info h3 {
+    color: var(--color-claro);
+    margin-bottom: 15px; /* Margen estándar */
+    font-size: 1.6em; /* Tamaño de fuente estándar */
+}
+
+.pie-enlaces h4 {
+    color: var(--color-claro); 
+    margin-bottom: 10px;
+}
+
+.pie-enlaces a {
+    color: var(--color-terciario);
+    display: block;
+    padding: 5px 0;
+}
+
+.pie-enlaces a:hover {
+    color: var(--color-secundario);
+}
+
+.pie-social h4 {
+    color: var(--color-claro); 
+    margin-bottom: 10px;
+    display: block; /* Aseguramos que se muestre el título */
+}
+
+.pie-social a {
+    color: var(--color-terciario);
+    font-size: 2em; /* Tamaño de íconos grande */
+    margin-right: 20px;
+    margin-left: 0; /* Eliminamos el margin-left que teníamos antes */
+}
+
+.pie-social a:hover {
+    color: var(--color-secundario);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px; /* Margen estándar */
+    font-size: 0.9em;
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* RESPONSIVE BÁSICO (Móviles) - Ajustado para footer completo */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+    
+    .encabezado-principal {
+        padding: 15px 20px;
+    }
+    .navegacion-principal {
+        display: none; 
+    }
+
+    .contenido-agradecimiento {
+        padding: 40px 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .btn-primario.large-btn {
+        font-size: 1.1em;
+        padding: 15px 30px;
+    }
+    
+    /* Reglas Responsive para el Footer Completo */
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .pie-info, .pie-enlaces, .pie-social {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+
+    .pie-social {
+        margin-top: 0;
+    }
+    
+    .pie-social a {
+        margin: 0 10px; /* Ajustar el margen entre íconos en móvil */
+    }
+}

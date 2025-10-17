@@ -1,0 +1,542 @@
+:root {
+    --color-primario: #1f4586;
+    --color-secundario: #1871ac;
+    --color-terciario: #ffffff;
+    
+    --fondo-oscuro-base: #0e1e3b;
+    --fondo-oscuro-superficie: #142a52;
+    
+    --color-blanco: #ffffff;
+    
+    --textura-fondo: url(../img/fondo.png);
+}
+
+/* ========================================================= */
+/* 0. FONDO FIJO */
+/* ========================================================= */
+
+.fondo-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;	
+    
+    background-image: var(--textura-fondo);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* ========================================================= */
+/* BASE & TIPOGRAFÍA */
+/* ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;	
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-terciario);	
+    background-color: transparent;	
+}
+
+/* CLASE PARA BLOQUEAR EL SCROLL EN MÓVIL AL ABRIR EL MENÚ */
+.no-scroll {
+    overflow: hidden;
+}
+
+section, footer {
+    background-color: var(--fondo-oscuro-base);	
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1600px;	
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+    color: var(--color-blanco);	
+}
+
+h2 {
+    font-size: 3.2em;	
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--color-terciario);	
+    margin-bottom: 70px;	
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secundario);
+    transition: color 0.3s;
+}
+
+/* ========================================================= */
+/* BOTONES Y CTAs */
+/* ========================================================= */
+
+.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil {
+    display: inline-block;
+    padding: 16px 40px;	
+    border-radius: 6px;	
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cotizar, .btn-cotizar-nav-movil {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4);	
+}
+
+.btn-cotizar:hover, .btn-cotizar-nav-movil:hover {
+    background: var(--color-primario);	
+    color: var(--color-terciario);	
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6);	
+}
+
+.btn-primario {
+    background: var(--color-primario);
+    color: var(--color-terciario);	
+    margin-top: 25px;
+    font-size: 1.2em;
+    box-shadow: 0 4px 10px rgba(31, 69, 134, 0.4);
+}
+
+.btn-primario:hover {
+    background: var(--color-secundario);
+    color: var(--color-terciario);
+    box-shadow: 0 6px 15px rgba(24, 113, 172, 0.6);
+}
+
+.btn-secundario {
+    background: transparent;
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+    margin-top: 35px;
+    font-size: 1.1em;
+}
+
+.btn-secundario:hover {
+    background: var(--color-primario);
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* 1. NAVEGACIÓN (ENCABEZADO) */
+/* ========================================================= */
+
+.encabezado-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: var(--fondo-oscuro-base);	
+    box-shadow: 0 2px 5px rgba(31, 69, 134, 0.2);	
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-img {
+    max-height: 45px;	
+    width: auto;
+    display: block;
+}
+
+.navegacion-principal ul {
+    list-style: none;
+    display: flex;
+    align-items: center;	
+    gap: 0;	
+}
+
+.navegacion-principal ul li a {
+    padding: 12px 18px;	
+    display: block;
+    color: var(--color-terciario);	
+    font-weight: 500;
+    white-space: nowrap;	
+    transition: color 0.3s;
+}
+
+.navegacion-principal ul li a:hover, .navegacion-principal ul li a.active {
+    color: var(--color-secundario);
+    border-bottom: 3px solid var(--color-secundario);	
+}
+
+.nav-cotizar-item-movil {
+    display: none;	
+}
+
+
+/* ========================================================= */
+/* 1.1 ÍCONO DE MENÚ (HAMBURGUESA) - Estilos Base */
+/* ========================================================= */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;	
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-secundario);
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.menu-activo .bar:nth-child(2) {
+    opacity: 0;	
+}
+.menu-toggle.menu-activo .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);	
+}
+.menu-toggle.menu-activo .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);	
+}
+
+
+/* ========================================================= */
+/* 2. PORTADA / HERO (Página de Marcas) */
+/* ========================================================= */
+
+.seccion-portada {
+    background: url(../img/portada-marcas.jpg) no-repeat center center/cover;	
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    color: var(--color-terciario);
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);	
+    position: relative;
+    padding: 0;
+    border-bottom: 3px solid var(--color-primario);	
+}
+
+.seccion-portada::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(14, 30, 59, 0.75);	
+    z-index: 1;
+}
+
+.contenido-portada {
+    padding: 0 50px;
+    z-index: 2;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.contenido-portada h1 {
+    font-size: 3.5em;	
+    margin-bottom: 15px;
+    color: var(--color-terciario);	
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.contenido-portada p {
+    font-size: 1.4em;	
+    font-weight: 300;
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* 3. SECCIÓN MARCAS (Listado principal) */
+/* ========================================================= */
+
+.seccion-marcas {
+    padding: 100px 0;
+    background: none;
+}
+
+.marcas-completa-grilla {
+    display: grid;	
+    grid-template-columns: repeat(3, 1fr);	
+    gap: 30px;	
+    padding: 80px 0;
+}
+
+.tarjeta-marca {
+    background: var(--fondo-oscuro-superficie);	
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    display: flex;
+    flex-direction: column;	
+    align-items: center;
+    text-align: center;
+    
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 5px solid var(--color-secundario);	
+}
+
+.tarjeta-marca:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-top-color: var(--color-primario);
+}
+
+.logo-marca-full {
+    max-height: 70px;	
+    width: auto;
+    margin-bottom: 15px;
+    margin-right: 0;	
+    filter: brightness(0) invert(1);	
+    
+    display: block;
+    padding: 0;
+}
+
+.tarjeta-marca h3 {
+    color: var(--color-primario);
+    font-size: 1.8em;
+    margin-bottom: 5px;	
+}
+
+.tarjeta-marca p {
+    color: var(--color-terciario);
+    line-height: 1.6;
+    font-size: 1em;
+}
+
+/* ========================================================= */
+/* 6. PIE DE PÁGINA (FOOTER) */
+/* ========================================================= */
+
+footer {
+    background: var(--fondo-oscuro-base);	
+    color: var(--color-terciario);
+    padding: 50px 0 20px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-primario);	
+}
+
+.pie-info h3 {
+    color: var(--color-terciario);
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.pie-enlaces h4 {
+    color: var(--color-secundario);	
+    margin-bottom: 10px;
+}
+
+.pie-enlaces a {
+    color: var(--color-terciario);
+    display: block;
+    padding: 5px 0;
+}
+
+.pie-enlaces a:hover {
+    color: var(--color-secundario);
+}
+
+.pie-social h4 {
+    color: var(--color-secundario);	
+    margin-bottom: 10px;
+}
+
+.pie-social a {
+    color: var(--color-terciario);
+    font-size: 2em;	
+    margin-right: 20px;
+}
+
+.pie-social a:hover {
+    color: var(--color-secundario);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: var(--color-terciario);
+}
+
+/* ========================================================= */
+/* RESPONSIVE AJUSTADO A 768px */
+/* ========================================================= */
+
+@media (max-width: 1200px) {
+    .marcas-completa-grilla {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* PUNTO DE CORTE CLAVE: Móvil (768px) */
+@media (max-width: 768px) {
+    
+    .encabezado-principal {
+        padding: 15px 20px;
+    }
+    
+    .logo-img {
+        max-height: 35px;
+    }
+    
+    /* Mostrar el toggle */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Ocultar botón de escritorio */
+    .btn-cotizar {
+        display: none;
+    }
+    
+    /* Configuración del menú desplegable */
+    .navegacion-principal {
+        display: block; 
+        
+        position: fixed;
+        top: 65px;
+        right: 0;
+        /* CORRECCIÓN CLAVE: Usamos 100vw para cubrir toda la pantalla */
+        width: 100vw; 
+        height: 100vh;	
+        background: var(--fondo-oscuro-base);	
+        
+        transform: translateX(100%);	
+        transition: transform 0.4s ease-in-out;
+        z-index: 999;	
+        overflow-y: auto;	
+    }
+
+    /* Estado activo, lo trae a la vista */
+    .navegacion-principal.menu-activo {
+        transform: translateX(0);	
+    }
+    
+    .navegacion-principal ul {
+        flex-direction: column;	
+        /* AÑADIDO: Padding lateral para que los enlaces no toquen los bordes */
+        padding: 20px 20px; 
+        align-items: stretch;
+    }
+    
+    .navegacion-principal ul li a {
+        padding: 18px 25px;	
+        text-align: center;
+        border-bottom: 1px solid var(--fondo-oscuro-superficie);	
+        font-size: 1.1em;
+    }
+
+    .navegacion-principal ul li a:hover, .navegacion-principal ul li a.active {
+        border-bottom: none;	
+        background-color: var(--fondo-oscuro-superficie);
+    }
+    
+    /* Mostrar item de Cotizar Móvil */
+    .nav-cotizar-item-movil {
+        display: block; 
+        padding: 20px 0;	
+    }
+
+    .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
+        /* USAMOS 100% PARA QUE EL ANCHO SEA CONTROLADO POR EL PADDING DE UL */
+        width: 100%;	
+        margin: 0 auto;
+        display: block;
+        padding: 12px 20px;	
+    }
+    
+    /* --- Otros ajustes responsive --- */
+    .seccion-portada {
+        min-height: 400px;
+    }
+    
+    .contenido-portada {
+        padding: 0 20px;
+    }
+
+    .contenido-portada h1 {
+        font-size: 2.2em;
+    }
+    
+    .contenido-portada p {
+        font-size: 1.1em;
+    }
+
+    .seccion-marcas {
+        padding: 60px 0;
+    }
+    
+    .marcas-completa-grilla {
+        grid-template-columns: 1fr;
+        padding: 40px 0;
+    }
+    
+    .tarjeta-marca {
+        text-align: center;
+    }
+
+    .logo-marca-full {
+        margin-bottom: 15px;	
+    }
+
+    .contenido-marca {
+        text-align: center;
+    }
+
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .pie-info, .pie-enlaces, .pie-social {
+        flex-basis: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .pie-enlaces a {
+        text-align: center;
+    }
+    
+    .pie-social a {
+        margin: 0 10px;	
+    }
+}
