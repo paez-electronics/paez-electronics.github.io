@@ -19,10 +19,21 @@
         <a href="../index.html" class="logo">
             <img src="../img/logo-blanco.png" alt="Paez Electronics" class="logo-img"> 
         </a> 
+        
+        <button class="menu-toggle" aria-label="Abrir Menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        
         <nav class="navegacion-principal">
             <ul>
                 <li><a href="marcas.html">Marcas</a></li>
                 <li><a href="contacto.html" class="active">Contacto</a></li>
+                
+                <li class="nav-cotizar-item-movil">
+                    <a href="cotizar.html" class="btn-cotizar-nav-movil">COTIZAR</a>
+                </li>
             </ul>
         </nav>
         <a href="cotizar.html" class="btn-cotizar">Cotizar</a>
@@ -59,7 +70,7 @@
                     </div>
                 </div>
 
-                     <div class="mapa-contenedor">
+                    <div class="mapa-contenedor">
                     <h4>Nuestra Ubicación</h4>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.439711035604!2d-69.3444188237132!3d10.063010546306643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e8767b02cd727b5%3A0x2aae29b20145faa6!2sPaez%20Electronics!5e0!3m2!1sen!2sus!4v1760540570805!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
@@ -90,8 +101,21 @@
                 <a href="mailto:admin@paezelectronicsllc.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <p class="copyright">&copy; 2025 Paez Electronics. Todos los derechos reservados.</p>
+        <p class="copyright">© 2025 Paez Electronics. Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navPrincipal = document.querySelector('.navegacion-principal');
+            const body = document.body;
+
+            menuToggle.addEventListener('click', function() {
+                navPrincipal.classList.toggle('menu-activo');
+                menuToggle.classList.toggle('menu-activo'); 
+                body.classList.toggle('no-scroll');
+            });
+        });
+    </script>
 </body>
 </html>
