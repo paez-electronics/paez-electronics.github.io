@@ -20,7 +20,7 @@
             <img src="../img/logo-blanco.png" alt="Paez Electronics" class="logo-img"> 
         </a> 
         
-        <button class="menu-toggle" aria-label="Abrir Menú">
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -28,21 +28,28 @@
         
         <nav class="navegacion-principal">
             <ul>
-                <li><a href="marcas.html">Marcas</a></li>
-                <li><a href="contacto.html" class="active">Contacto</a></li>
+                <li><a href="marcas.html" data-key="marcas_nav">Marcas</a></li>
+                <li><a href="contacto.html" class="active" data-key="contacto_nav">Contacto</a></li>
+                <li><a href="cotizar.html" data-key="cotizar_nav_header">Cotizar</a></li>
                 
-                <li class="nav-cotizar-item-movil">
-                    <a href="cotizar.html" class="btn-cotizar-nav-movil">COTIZAR</a>
+                <li class="nav-idiomas-item-movil">
+                    <div class="selector-idioma selector-idioma-movil">
+                        <button id="btn-es-movil" class="lang-btn active" data-lang="es">ES</button>
+                        <button id="btn-en-movil" class="lang-btn" data-lang="en">EN</button>
+                    </div>
                 </li>
             </ul>
         </nav>
-        <a href="cotizar.html" class="btn-cotizar">Cotizar</a>
+        
+        <div class="selector-idioma selector-idioma-escritorio">
+            <button id="btn-es" class="lang-btn active" data-lang="es">ES</button>
+            <button id="btn-en" class="lang-btn" data-lang="en">EN</button>
+        </div>
     </header>
-
     <section class="seccion-portada" id="portada">
         <div class="contenido-portada">
-            <h1>Hablemos de Automatización</h1>
-            <p>Contáctenos para una cotización, soporte técnico o resolver cualquier duda sobre su proyecto industrial.</p>
+            <h1 data-key="contacto_portada_titulo">Hablemos de Automatización</h1>
+            <p data-key="contacto_portada_subtitulo">Contáctenos para una cotización, soporte técnico o resolver cualquier duda sobre su proyecto industrial.</p>
         </div>
     </section>
     
@@ -50,11 +57,11 @@
         <div class="container">
             <div class="contacto-grilla single-columna">
                 <div class="columna-info">
-                    <h3>Información de Contacto y Ubicación</h3>
+                    <h3 data-key="contacto_info_titulo">Información de Contacto y Ubicación</h3>
                 <div class="datos-grid">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>17546 Crescent Moon Loop Bradenton, FL 34211</p>
+                        <p data-key="contacto_direccion">17546 Crescent Moon Loop, Bradenton, FL 34211</p>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
@@ -67,8 +74,8 @@
                 </div>
 
                     <div class="mapa-contenedor">
-                    <h4>Nuestra Ubicación</h4>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.992500642622!2d-82.3634996250333!3d27.46949283594291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c330f1fb79eb05%3A0x2225dbb0e13ac26!2s17546%20Crescent%20Moon%20Lp%2C%20Bradenton%2C%20FL%2034211%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sve!4v1761314003523!5m2!1ses-419!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
+                    <h4 data-key="contacto_mapa_titulo">Nuestra Ubicación</h4>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3539.992500642622!2d-82.3634996250333!3d27.46949283594291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c330f1fb79eb05%3A0x2225dbb0e13ac26!2s17546%20Crescent%20Moon%20Lp%2C%20Bradenton%2C%20FL%2034211%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sve!4v1761320480669!5m2!1ses-419!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    </div>
                 </div>
             </div>
         </div>
@@ -77,38 +84,26 @@
     <footer id="pie-contacto"> 
         <div class="container">
             <div class="pie-info">
-                <h3>Paez Electronics LLC</h3>
-                <p>Especialistas en soluciones de Automatización Industrial y Control de Procesos.</p>
+                <h3 data-key="pie_info_titulo">Paez Electronics LLC</h3>
+                <p data-key="pie_info_texto">Especialistas en soluciones de Automatización Industrial y Control de Procesos.</p>
             </div>
             <div class="pie-enlaces">
-                <h4>Enlaces Rápidos</h4>
+                <h4 data-key="pie_enlaces_titulo">Enlaces Rápidos</h4>
                 <ul>
-                    <li><a href="marcas.html">Marcas</a></li>
-                    <li><a href="contacto.html">Contacto</a></li> 
-                    <li><a href="cotizar.html">Cotizar</a></li>
+                    <li><a href="marcas.html" data-key="pie_enlaces_marcas">Marcas</a></li>
+                    <li><a href="contacto.html" data-key="pie_enlaces_contacto">Contacto</a></li> 
+                    <li><a href="cotizar.html" data-key="pie_enlaces_cotizar">Cotizar</a></li>
                 </ul>
             </div>
             <div class="pie-social">
-                <h4>Síguenos</h4>
+                <h4 data-key="pie_social_titulo">Síguenos</h4>
                 <a href="https://wa.me/17869703327"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:admin@paezelectronicsllc.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <p class="copyright">© 2025 Paez Electronics LLC. Todos los derechos reservados.</p>
+        <p class="copyright" data-key="pie_copyright">© 2025 Paez Electronics LLC. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navPrincipal = document.querySelector('.navegacion-principal');
-            const body = document.body;
-
-            menuToggle.addEventListener('click', function() {
-                navPrincipal.classList.toggle('menu-activo');
-                menuToggle.classList.toggle('menu-activo'); 
-                body.classList.toggle('no-scroll');
-            });
-        });
-    </script>
+    <script src="../js/idiomas.js"></script>
+    <script src="../js/menu-responsive.js"></script> 
 </body>
 </html>

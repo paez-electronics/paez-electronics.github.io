@@ -41,16 +41,13 @@ const translations = {
     pie_copyright: { es: '© 2025 Paez Electronics LLC. Todos los derechos reservados.', en: '© 2025 Paez Electronics LLC. All rights reserved.' },
 
     // =========================================================================
-    //  NUEVAS CLAVES AÑADIDAS PARA LA PÁGINA 'marcas.html'
+    //  NUEVAS CLAVES AÑADIDAS PARA LA PÁGINA 'marcas.html' (ya existían)
     // =========================================================================
     marcas_portada_titulo: { es: 'Componentes de Calidad Certificada', en: 'Certified Quality Components' },
     marcas_portada_subtitulo: { es: 'Trabajamos solo con marcas líderes globales, sinónimo de fiabilidad y rendimiento industrial.', en: 'We only work with global leading brands, synonymous with reliability and industrial performance.' },
     marcas_portada_cta: { es: 'Ver Catálogo Completo', en: 'View Full Catalog' },
-
     marcas_lista_titulo: { es: 'Catálogo de Marcas Aliadas', en: 'Catalog of Allied Brands' },
     marcas_lista_subtitulo: { es: 'Componentes seleccionados por su alta calidad y reconocimiento internacional en el sector.', en: 'Components selected for their high quality and international recognition in the sector.' },
-
-    // Descripciones de Marcas
     chint_desc: { es: 'Líder mundial en la fabricación de equipos de bajo voltaje, media y alta tensión, y soluciones de energía solar. Sinónimo de innovación y seguridad eléctrica.', en: 'Global leader in the manufacturing of low, medium, and high voltage equipment, and solar energy solutions. Synonymous with innovation and electrical safety.' },
     ebchq_desc: { es: 'Especialistas en la protección de sistemas eléctricos y automatización. Sus productos ofrecen fiabilidad y precisión para entornos industriales exigentes.', en: 'Specialists in electrical system protection and automation. Their products offer reliability and precision for demanding industrial environments.' },
     autonics_desc: { es: 'Proporciona soluciones integrales de automatización que incluyen sensores, controladores de temperatura y medidores de alto rendimiento para el control de procesos.', en: 'Provides comprehensive automation solutions including high-performance sensors, temperature controllers, and meters for process control.' },
@@ -60,6 +57,16 @@ const translations = {
     exceline_desc: { es: 'Conocidos por sus protectores de voltaje y dispositivos de monitoreo, brindando protección esencial para equipos sensibles en ambientes industriales y comerciales.', en: 'Known for their voltage protectors and monitoring devices, providing essential protection for sensitive equipment in industrial and commercial environments.' },
     schneider_desc: { es: 'Líder global en la transformación digital de la gestión de la energía y la automatización. Sus soluciones optimizan la eficiencia y sostenibilidad industrial.', en: 'Global leader in the digital transformation of energy management and automation. Their solutions optimize industrial efficiency and sustainability.' },
     totalquality_desc: { es: 'Firma especializada en herramientas y accesorios que cumplen con los más altos estándares de calidad, necesarios para el mantenimiento y montaje de sistemas de control.', en: 'Firm specializing in tools and accessories that meet the highest quality standards, necessary for the maintenance and assembly of control systems.' },
+
+    // =========================================================================
+    //  NUEVAS CLAVES AÑADIDAS PARA LA PÁGINA 'contacto.html'
+    // =========================================================================
+    contacto_portada_titulo: { es: 'Hablemos de Automatización', en: 'Let\'s Talk About Automation' },
+    contacto_portada_subtitulo: { es: 'Contáctenos para una cotización, soporte técnico o resolver cualquier duda sobre su proyecto industrial.', en: 'Contact us for a quote, technical support, or to resolve any questions about your industrial project.' },
+    contacto_info_titulo: { es: 'Información de Contacto y Ubicación', en: 'Contact Information and Location' },
+    contacto_direccion: { es: '17546 Crescent Moon Loop, Bradenton, FL 34211', en: '17546 Crescent Moon Loop, Bradenton, FL 34211' },
+    contacto_mercadolibre: { es: 'PAEZELECTRONICSCA (Mercado Libre)', en: 'PAEZELECTRONICSCA (Mercado Libre)' },
+    contacto_mapa_titulo: { es: 'Nuestra Ubicación', en: 'Our Location' },
 };
 
 const setLanguage = (lang) => {
@@ -72,8 +79,6 @@ const setLanguage = (lang) => {
 
     document.documentElement.lang = lang;
     
-    // Se elimina el código que cambia el document.title para mantener el título original.
-
     document.querySelectorAll('.lang-btn').forEach(button => {
         if (button.getAttribute('data-lang') === lang) {
             button.classList.add('active');
@@ -88,7 +93,6 @@ const setLanguage = (lang) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Se asegura de usar un valor por defecto si no hay preferencia guardada.
     const storedLang = localStorage.getItem('lang') || 'es';
     setLanguage(storedLang); 
 
