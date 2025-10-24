@@ -147,6 +147,7 @@ a {
     max-height: 45px; 
     width: auto;
     display: block;
+    /* Sin modificaciones al centrado del logo */
 }
 
 .navegacion-principal {
@@ -180,7 +181,6 @@ a {
 }
 
 /* OCULTAMOS el item de idioma móvil en ESCRITORIO */
-/* REGLA CORREGIDA para ocultar la duplicación */
 .navegacion-principal ul .nav-idiomas-item-movil {
     display: none !important; 
 }
@@ -446,7 +446,7 @@ a {
 }
 
 /* ========================================================= */
-/* 6. PIE DE PÁGINA (FOOTER) */
+/* 6. PIE DE PÁGINA (FOOTER) - Sin Modificaciones */
 /* ========================================================= */
 
 footer {
@@ -475,6 +475,7 @@ footer .container {
     margin-bottom: 10px;
 }
 
+/* Viñetas SIN MODIFICAR */
 .pie-enlaces a {
     color: var(--color-terciario);
     display: block;
@@ -517,26 +518,26 @@ footer .container {
         padding: 15px 20px;
     }
 
-    /* 1. LOGO MÁS PEQUEÑO EN MÓVIL */
+    /* 1. LOGO MÁS PEQUEÑO EN MÓVIL (parte del header responsive original) */
     .logo-img {
         max-height: 35px; 
+        /* Sin 'vertical-align: middle;' para evitar cambios en el menú */
     }
     
-    /* 2. OCULTAR SELECTOR DE IDIOMA DEL HEADER */
+    /* 2. OCULTAR SELECTOR DE IDIOMA DEL HEADER DE ESCRITORIO */
     .encabezado-principal > .selector-idioma {
-        display: none; /* Oculto en la barra de navegación en móvil */
+        display: none; 
     }
     
-    /* 3. MOSTRAR ITEM DE IDIOMA MÓVIL Y ESTILIZARLO DENTRO DEL MENÚ */
+    /* 3. **ÚNICA MODIFICACIÓN SOLICITADA**: HACER VISIBLE EL BOTÓN DE IDIOMA EN RESPONSIVE */
     .nav-idiomas-item-movil {
-        display: block !important; /* Hacemos visible el item contenedor */
+        display: block !important; 
         width: 100%;
         text-align: center;
-        padding: 20px 0 30px; /* Espaciado extra en móvil */
+        padding: 20px 0 30px; 
         border-bottom: 1px solid var(--fondo-oscuro-superficie); 
     }
 
-    /* El selector de idioma dentro del li móvil debe ser flex para centrar */
     .nav-idiomas-item-movil .selector-idioma {
         display: flex; 
         justify-content: center;
@@ -546,7 +547,7 @@ footer .container {
     }
 
     /* ------------------------------------------------ */
-    /* MENÚ RESPONSIVE: Despliegue de DERECHA a IZQUIERDA */
+    /* MENÚ RESPONSIVE: CÓDIGO ORIGINAL SIN MODIFICAR */
     /* ------------------------------------------------ */
     
     .menu-toggle {
@@ -599,7 +600,7 @@ footer .container {
     .menu-toggle.menu-activo .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.menu-activo .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Otros ajustes responsive */
+    /* Otros ajustes responsive de contenido */
     .seccion-portada { min-height: 450px; }
     .contenido-portada h1 { font-size: 2.5em; }
     .contenido-portada p { font-size: 1.1em; }
@@ -611,4 +612,6 @@ footer .container {
         align-items: center;
         text-align: center;
     }
+    
+    /* No se modifica ninguna otra parte del CSS */
 }

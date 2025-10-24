@@ -8,6 +8,7 @@ const translations = {
     // Clave: { es: 'Texto en Español', en: 'Texto en Inglés' }
     
     // ENCABEZADO Y NAVEGACIÓN
+    inicio_nav: { es: 'Inicio', en: 'Home' },
     marcas_nav: { es: 'Marcas', en: 'Brands' },
     contacto_nav: { es: 'Contacto', en: 'Contact' },
     cotizar_nav_header: { es: 'Cotizar', en: 'Get Quote' }, 
@@ -97,25 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const navIdiomasItem = document.querySelector('.nav-idiomas-item-movil');
     
     if (navIdiomasItem) {
-        // Clonar el selector de idioma para el menú móvil
+        // Clonar el selector de idioma de escritorio para el menú móvil
         const originalSelector = document.querySelector('.selector-idioma');
         if (originalSelector) {
             const langSelectorClone = originalSelector.cloneNode(true);
             
-            // Eliminar IDs para evitar duplicados, aunque ya no deberían ser necesarios en el clon
+            // Eliminar IDs para evitar duplicados, aunque la función setLanguage ya no usa IDs
             langSelectorClone.querySelector('#btn-es')?.removeAttribute('id');
             langSelectorClone.querySelector('#btn-en')?.removeAttribute('id');
             
             // Adjuntar el clon al LI del menú móvil
             navIdiomasItem.appendChild(langSelectorClone);
-        }
-        
-        // **!!! CORRECCIÓN AGRESIVA PARA DUPLICACIÓN EN ESCRITORIO !!!**
-        // Si la ventana es ancha (desktop), eliminamos el elemento contenedor del menú móvil
-        if (window.innerWidth > 900) {
-            navIdiomasItem.style.display = 'none'; // Intentamos con JS
-            // Si eso no funciona, podríamos incluso intentar: navIdiomasItem.remove(); 
-            // pero lo dejamos como display: none por si se redimensiona.
         }
     }
     
@@ -123,8 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const storedLang = localStorage.getItem('lang') || 'es';
     setLanguage(storedLang); 
 
-    // c. Event Listeners para los botones (usando el DOMContentLoaded para asegurar que todos los botones existen)
-    // Selecciona todos los botones (original y clonado)
+    // c. Event Listeners para los botones (Selecciona todos los botones, original y clonado)
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', (e) => {
             const newLang = e.target.getAttribute('data-lang');
@@ -133,16 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // Re-chequear y aplicar el ocultamiento si el usuario redimensiona desde móvil a desktop
-    window.addEventListener('resize', () => {
-        if (navIdiomasItem) {
-            if (window.innerWidth > 900) {
-                navIdiomasItem.style.display = 'none';
-            } else {
-                // Asegurarse de que esté visible en móvil si el CSS falla
-                navIdiomasItem.style.display = 'block'; 
-            }
-        }
-    });
+    
+    // **IMPORTANTE: Eliminamos toda la lógica JS de window.innerWidth.
+    // El CSS maneja la visibilidad en móvil (ya está corregido).**
 });
