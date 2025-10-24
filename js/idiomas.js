@@ -86,6 +86,7 @@ const setLanguage = (lang) => {
         }
     });
 
+    // 5. Guardar la preferencia en localStorage
     localStorage.setItem('lang', lang);
 };
 
@@ -93,17 +94,28 @@ const setLanguage = (lang) => {
 // 3. Inicialización y Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     
-    // a. Clonar el selector de idioma en el menú móvil
     const navIdiomasItem = document.querySelector('.nav-idiomas-item-movil');
     
     if (navIdiomasItem) {
+        // Clonar el selector de idioma para el menú móvil
         const originalSelector = document.querySelector('.selector-idioma');
         if (originalSelector) {
             const langSelectorClone = originalSelector.cloneNode(true);
+            
+            // Eliminar IDs para evitar duplicados, aunque ya no deberían ser necesarios en el clon
             langSelectorClone.querySelector('#btn-es')?.removeAttribute('id');
             langSelectorClone.querySelector('#btn-en')?.removeAttribute('id');
             
+            // Adjuntar el clon al LI del menú móvil
             navIdiomasItem.appendChild(langSelectorClone);
+        }
+        
+        // **!!! CORRECCIÓN AGRESIVA PARA DUPLICACIÓN EN ESCRITORIO !!!**
+        // Si la ventana es ancha (desktop), eliminamos el elemento contenedor del menú móvil
+        if (window.innerWidth > 900) {
+            navIdiomasItem.style.display = 'none'; // Intentamos con JS
+            // Si eso no funciona, podríamos incluso intentar: navIdiomasItem.remove(); 
+            // pero lo dejamos como display: none por si se redimensiona.
         }
     }
     
@@ -112,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(storedLang); 
 
     // c. Event Listeners para los botones (usando el DOMContentLoaded para asegurar que todos los botones existen)
+    // Selecciona todos los botones (original y clonado)
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', (e) => {
             const newLang = e.target.getAttribute('data-lang');
@@ -119,5 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 setLanguage(newLang);
             }
         });
+    });
+
+    // Re-chequear y aplicar el ocultamiento si el usuario redimensiona desde móvil a desktop
+    window.addEventListener('resize', () => {
+        if (navIdiomasItem) {
+            if (window.innerWidth > 900) {
+                navIdiomasItem.style.display = 'none';
+            } else {
+                // Asegurarse de que esté visible en móvil si el CSS falla
+                navIdiomasItem.style.display = 'block'; 
+            }
+        }
     });
 });
