@@ -86,7 +86,6 @@ const setLanguage = (lang) => {
         }
     });
 
-    // 5. Guardar la preferencia en localStorage
     localStorage.setItem('lang', lang);
 };
 

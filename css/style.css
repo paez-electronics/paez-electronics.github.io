@@ -154,7 +154,7 @@ a {
     flex-grow: 1; 
     display: flex;
     
-    /* CORRECCIÓN: Centra los enlaces horizontalmente */
+    /* Centra los enlaces horizontalmente */
     justify-content: center; 
 }
 
@@ -180,8 +180,9 @@ a {
 }
 
 /* OCULTAMOS el item de idioma móvil en ESCRITORIO */
-.nav-idiomas-item-movil {
-    display: none; 
+/* REGLA CORREGIDA para ocultar la duplicación */
+.navegacion-principal ul .nav-idiomas-item-movil {
+    display: none !important; 
 }
 
 
@@ -528,7 +529,7 @@ footer .container {
     
     /* 3. MOSTRAR ITEM DE IDIOMA MÓVIL Y ESTILIZARLO DENTRO DEL MENÚ */
     .nav-idiomas-item-movil {
-        display: block; /* Hacemos visible el item contenedor */
+        display: block !important; /* Hacemos visible el item contenedor */
         width: 100%;
         text-align: center;
         padding: 20px 0 30px; /* Espaciado extra en móvil */

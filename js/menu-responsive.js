@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.navegacion-principal');
-    // Seleccionamos todos los enlaces *dentro* del nav para que cierren el menú
     const navLinks = navMenu.querySelectorAll('a'); 
     
     const toggleMenu = () => {
