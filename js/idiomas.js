@@ -97,6 +97,17 @@ const translations = {
     contacto_direccion: { es: '17546 Crescent Moon Loop, Bradenton, FL 34211', en: '17546 Crescent Moon Loop, Bradenton, FL 34211' },
     contacto_mercadolibre: { es: 'PAEZELECTRONICSCA (Mercado Libre)', en: 'PAEZELECTRONICSCA (Mercado Libre)' },
     contacto_mapa_titulo: { es: 'Nuestra Ubicación', en: 'Our Location' },
+    
+    // =========================================================================
+    // CLAVES AÑADIDAS PARA LA PÁGINA DE AGRADECIMIENTO (agradecimiento.html)
+    // =========================================================================
+    'title-agradecimiento': { es: '¡Cotización Enviada! | Paez Electronics', en: 'Quote Sent! | Paez Electronics' },
+    'agradecimiento-h1': { es: '¡Solicitud de Cotización Recibida!', en: 'Quote Request Received!' },
+    'agradecimiento-h2': { es: 'Gracias por contactar a Paez Electronics.', en: 'Thank you for contacting Paez Electronics.' },
+    'agradecimiento-p1': { es: 'Hemos recibido su solicitud detallada y estamos trabajando en la preparación de su presupuesto. Un miembro de nuestro equipo se pondrá en contacto con usted por email en las próximas 24 a 48 horas laborales.', en: 'We have received your detailed request and are working on preparing your quote. A member of our team will contact you via email within the next 24 to 48 business hours.' },
+    'agradecimiento-p2': { es: 'Mientras tanto, puede explorar nuestras marcas o volver al inicio.', en: 'Meanwhile, you can explore our brands or return to the homepage.' },
+    'agradecimiento-btn': { es: 'Volver al Inicio', en: 'Return to Homepage' },
+    'agradecimiento-nota': { es: 'Si necesita asistencia inmediata, contáctenos por WhatsApp.', en: 'If you require immediate assistance, please contact us via WhatsApp.' },
 };
 
 const setLanguage = (lang) => {

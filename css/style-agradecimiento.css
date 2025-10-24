@@ -1,19 +1,21 @@
+/* ========================================================= */
+/* VARIABLES */
+/* ========================================================= */
 :root {
     --color-primario: #1f4586;
     --color-secundario: #1871ac;
     --color-terciario: #ffffff;
-    --color-claro: #6cbff7; /* Usado para acentos de luz */
-    
     --fondo-oscuro-base: #0e1e3b;
     --fondo-oscuro-superficie: #142a52;
     
     --color-blanco: #ffffff;
+    --color-claro: #6cbff7; /* Añadido para el contenido de agradecimiento */
     
     --textura-fondo: url(../img/fondo.png);
 }
 
 /* ========================================================= */
-/* 0. FONDO FIJO */
+/* 0. FONDO FIJO & BASE */
 /* ========================================================= */
 
 .fondo-fijo {
@@ -30,15 +32,11 @@
     background-repeat: no-repeat;
 }
 
-
-/* ========================================================= */
-/* BASE & TIPOGRAFÍA */
-/* ========================================================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth; 
 }
 
 body {
@@ -46,7 +44,6 @@ body {
     line-height: 1.6;
     color: var(--color-terciario); 
     background-color: transparent; 
-    scroll-behavior: smooth; 
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -67,12 +64,11 @@ h1, h2, h3 {
     color: var(--color-claro); 
 }
 
-/* Estilo específico para la sección de agradecimiento */
 h1 {
     font-size: 2.5em;
     font-weight: 700;
     margin-top: 20px;
-    color: var(--color-terciario); /* Color más fuerte para el título principal */
+    color: var(--color-terciario); 
 }
 
 h2 {
@@ -88,10 +84,10 @@ a {
 }
 
 /* ========================================================= */
-/* BOTONES Y CTAs (Replicados de los otros CSS) */
+/* BOTONES Y CTAs */
 /* ========================================================= */
 
-.btn-cotizar, .btn-primario, .btn-secundario {
+.btn-primario {
     display: inline-block;
     padding: 16px 40px; 
     border-radius: 6px; 
@@ -102,28 +98,13 @@ a {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.btn-cotizar {
-    background: var(--color-secundario);
-    color: var(--color-terciario);
-    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
-}
-
-.btn-cotizar:hover {
-    background: var(--color-primario); 
-    color: var(--color-terciario); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
-}
-
-.btn-primario {
+    
     background: var(--color-primario);
     color: var(--color-terciario); 
     margin-top: 30px;
     font-size: 1.2em;
     box-shadow: 0 4px 10px rgba(31, 69, 134, 0.4);
-    display: inline-flex; /* Para alinear el icono con el texto */
+    display: inline-flex;
     align-items: center;
     gap: 10px;
 }
@@ -141,7 +122,7 @@ a {
 }
 
 /* ========================================================= */
-/* 1. NAVEGACIÓN (ENCABEZADO) */
+/* 1. NAVEGACIÓN (HEADER) - Estilos Unificados */
 /* ========================================================= */
 
 .encabezado-principal {
@@ -154,13 +135,19 @@ a {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 3px solid var(--color-secundario); 
+    border-bottom: 3px solid var(--color-secundario);
 }
 
 .logo-img {
     max-height: 45px; 
     width: auto;
     display: block;
+}
+
+.navegacion-principal {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
 }
 
 .navegacion-principal ul {
@@ -170,6 +157,7 @@ a {
     gap: 0; 
 }
 
+/* Estilo para los elementos normales del NAV */
 .navegacion-principal ul li a {
     padding: 12px 18px; 
     display: block;
@@ -177,6 +165,9 @@ a {
     font-weight: 500;
     white-space: nowrap; 
     transition: color 0.3s;
+    /* Reiniciamos estilos de botón para los otros enlaces, si se heredan */
+    background: none !important;
+    box-shadow: none !important;
 }
 
 .navegacion-principal ul li a:hover {
@@ -184,14 +175,87 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
+/* --- ESTILO ESPECIAL PARA EL BOTÓN COTIZAR USANDO SU DATA-KEY (ESCRITORIO) --- */
+a[data-key="cotizar_nav_header"] {
+    /* 1. Resetea estilos de enlace normal */
+    color: var(--color-terciario) !important;
+    border-bottom: none !important;
+    
+    /* 2. Aplica estilos de botón */
+    background: var(--color-secundario);
+    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4);
+    padding: 10px 20px !important; 
+    margin-left: 20px; 
+    font-size: 0.9em;
+    border-radius: 6px; 
+    font-weight: 600 !important;
+    
+    /* CORRECCIÓN: Quitamos el forzado a mayúsculas */
+    text-transform: none; 
+    
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+a[data-key="cotizar_nav_header"]:hover {
+    background: var(--color-primario);  
+    color: var(--color-terciario) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
+    border-bottom: none !important;
+}
+/* --- Fin Estilo Botón Cotizar Escritorio --- */
+
+/* --- Botones de Idioma y Menú Responsive --- */
+.menu-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; 
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-secundario);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-idiomas-item-movil {
+    display: none; 
+}
+
+/* Estilos de Idioma - Copiados del Index */
+.selector-idioma-escritorio { 
+    display: flex;
+    align-items: center; 
+    margin-left: 20px; 
+}
+.selector-idioma-movil { display: none; }
+.selector-idioma { display: flex; align-items: center; z-index: 10; }
+.lang-btn {
+    background: transparent; color: var(--color-terciario); border: 1px solid var(--color-secundario); 
+    padding: 8px 12px; font-size: 0.9em; font-weight: 600; cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; text-transform: uppercase; font-family: inherit; 
+}
+#btn-es, #btn-es-movil { border-radius: 4px 0 0 4px; border-right: none; }
+#btn-en, #btn-en-movil { border-radius: 0 4px 4px 0; }
+.lang-btn.active { background-color: var(--color-secundario); color: var(--fondo-oscuro-base); border-color: var(--color-secundario); cursor: default; }
+.lang-btn:not(.active):hover { background-color: var(--color-primario); border-color: var(--color-primario); }
+
+
 /* ========================================================= */
 /* 3. SECCIÓN AGRADECIMIENTO */
 /* ========================================================= */
 
 .seccion-agradecimiento {
-    flex-grow: 1; /* Ocupa el espacio restante entre header y footer */
+    flex-grow: 1;
     display: flex;
-    align-items: center; /* Centrado vertical */
+    align-items: center;
     justify-content: center;
     padding: 50px 0;
     background: none;
@@ -210,12 +274,11 @@ a {
 
 .icono-confirmacion {
     font-size: 5em;
-    color: #4CAF50; /* Un color verde de éxito */
+    color: #4CAF50; /* Un verde de éxito */
     margin-bottom: 20px;
     animation: bounce 1s ease-in-out;
 }
 
-/* Animación de rebote simple */
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
@@ -244,13 +307,13 @@ a {
 }
 
 /* ========================================================= */
-/* 6. PIE DE PÁGINA (FOOTER) - Versión COMPLETA */
+/* 6. PIE DE PÁGINA (FOOTER) */
 /* ========================================================= */
-
 footer {
     background: var(--fondo-oscuro-base); 
     color: var(--color-terciario);
-    padding: 50px 0 20px; /* Padding completo */
+    padding: 50px 0 20px; 
+    margin-top: auto; 
 }
 
 footer .container {
@@ -262,99 +325,76 @@ footer .container {
     border-bottom: 1px solid var(--color-primario); 
 }
 
-.pie-info h3 {
-    color: var(--color-claro);
-    margin-bottom: 15px; /* Margen estándar */
-    font-size: 1.6em; /* Tamaño de fuente estándar */
-}
-
-.pie-enlaces h4 {
-    color: var(--color-claro); 
-    margin-bottom: 10px;
-}
-
-.pie-enlaces a {
-    color: var(--color-terciario);
-    display: block;
-    padding: 5px 0;
-}
-
-.pie-enlaces a:hover {
-    color: var(--color-secundario);
-}
-
-.pie-social h4 {
-    color: var(--color-claro); 
-    margin-bottom: 10px;
-    display: block; /* Aseguramos que se muestre el título */
-}
-
-.pie-social a {
-    color: var(--color-terciario);
-    font-size: 2em; /* Tamaño de íconos grande */
-    margin-right: 20px;
-    margin-left: 0; /* Eliminamos el margin-left que teníamos antes */
-}
-
-.pie-social a:hover {
-    color: var(--color-secundario);
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 30px; /* Margen estándar */
-    font-size: 0.9em;
-    color: var(--color-terciario);
-}
+.pie-info h3 { color: var(--color-claro); margin-bottom: 15px; font-size: 1.6em; }
+.pie-enlaces h4 { color: var(--color-claro); margin-bottom: 10px; }
+.pie-enlaces a { color: var(--color-terciario); display: block; padding: 5px 0; }
+.pie-enlaces a:hover { color: var(--color-secundario); }
+.pie-social h4 { color: var(--color-claro); margin-bottom: 10px; display: block; }
+.pie-social a { color: var(--color-terciario); font-size: 2em; margin-right: 20px; margin-left: 0; }
+.pie-social a:hover { color: var(--color-secundario); }
+.copyright { text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--color-terciario); }
 
 /* ========================================================= */
-/* RESPONSIVE BÁSICO (Móviles) - Ajustado para footer completo */
+/* RESPONSIVE */
 /* ========================================================= */
 
 @media (max-width: 900px) {
+    .encabezado-principal { padding: 15px 20px; }
+    .logo-img { max-height: 35px; } 
     
-    .encabezado-principal {
-        padding: 15px 20px;
-    }
-    .navegacion-principal {
-        display: none; 
-    }
-
-    .contenido-agradecimiento {
-        padding: 40px 20px;
-    }
+    /* Ocultar selector de idioma de escritorio */
+    .selector-idioma-escritorio { display: none !important; }
     
-    h1 {
-        font-size: 2em;
-    }
+    /* Activar menú responsivo */
+    .menu-toggle { display: block; }
     
-    h2 {
-        font-size: 1.5em;
+    /* Menú Desplegable (Copiado de su index.css) */
+    .navegacion-principal { 
+        flex-grow: 0; 
+        position: fixed; top: 65px; right: 0; left: auto; width: 100%; height: 100vh; 
+        background: var(--fondo-oscuro-base); transform: translateX(100%); transition: transform 0.4s ease-in-out;
+        z-index: 999; overflow-y: auto; 
     }
-
-    .btn-primario.large-btn {
+    .navegacion-principal.menu-activo { transform: translateX(0); }
+    .navegacion-principal ul { flex-direction: column; padding: 20px 0; align-items: stretch; }
+    
+    /* Estilo general de enlaces en móvil (Copiado de su index.css) */
+    .navegacion-principal ul li a { 
+        padding: 18px 25px; text-align: center; border-bottom: 1px solid var(--fondo-oscuro-superficie); 
         font-size: 1.1em;
-        padding: 15px 30px;
+        /* Limpiamos estilos de botón para móvil */
+        background: none !important; 
+        box-shadow: none !important;
+        margin-left: 0 !important;
+        border-radius: 0 !important;
+        color: var(--color-terciario) !important;
+    }
+
+    .navegacion-principal ul li a:hover, .navegacion-principal ul li a.active { 
+        border-bottom: none; 
+        background-color: var(--fondo-oscuro-superficie);
+        color: var(--color-secundario) !important; 
     }
     
-    /* Reglas Responsive para el Footer Completo */
+    .nav-idiomas-item-movil { display: block; width: 100%; text-align: center; padding: 20px 0 30px; border-bottom: 1px solid var(--fondo-oscuro-superficie); }
+    .selector-idioma-movil { display: flex; justify-content: center; width: 100%; margin: 0; padding: 0; }
+
+    /* Contenido Agradecimiento */
+    .contenido-agradecimiento { padding: 40px 20px; }
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    .btn-primario.large-btn { font-size: 1.1em; padding: 15px 30px; }
+    
+    /* Footer Responsive */
     footer .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 0;
     }
-
     .pie-info, .pie-enlaces, .pie-social {
         flex-basis: 100%;
         margin-bottom: 30px;
     }
-
-    .pie-social {
-        margin-top: 0;
-    }
-    
-    .pie-social a {
-        margin: 0 10px; /* Ajustar el margen entre íconos en móvil */
-    }
+    .pie-social a { margin: 0 10px; }
 }
