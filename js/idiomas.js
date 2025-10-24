@@ -55,7 +55,7 @@ const translations = {
     pie_enlaces_contacto: { es: 'Contacto', en: 'Contact' },
     pie_enlaces_cotizar: { es: 'Cotizar', en: 'Get Quote' },
     pie_social_titulo: { es: 'Síguenos', en: 'Follow Us' },
-    pie_copyright: { es: '© 2025 Paez Electronics. Todos los derechos reservados.', en: '© 2025 Paez Electronics. All rights reserved.' },
+    pie_copyright: { es: '© 2025 Paez Electronics LLC. Todos los derechos reservados.', en: '© 2025 Paez Electronics LLC. All rights reserved.' },
 };
 
 // 2. Función principal de traducción
