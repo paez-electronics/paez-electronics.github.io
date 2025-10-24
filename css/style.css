@@ -87,7 +87,6 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-/* Solo para botones grandes de contenido */
 .btn-primario, .btn-secundario {
     display: inline-block;
     padding: 16px 40px; 
@@ -150,11 +149,8 @@ a {
 }
 
 .navegacion-principal {
-    /* Permitir que el menú ocupe el espacio */
     flex-grow: 1; 
     display: flex;
-    
-    /* CORRECCIÓN: Centra los enlaces horizontalmente */
     justify-content: center; 
 }
 
@@ -179,7 +175,6 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
-/* OCULTAMOS el item de idioma móvil en ESCRITORIO */
 .nav-idiomas-item-movil {
     display: none; 
 }
@@ -210,10 +205,17 @@ a {
 /* 1.2 SELECTOR DE IDIOMA (En el Header, a la derecha) */
 /* ========================================================= */
 
+.selector-idioma-escritorio {
+    display: flex;
+}
+
+.selector-idioma-movil {
+    display: none;
+}
+
 .selector-idioma {
     display: flex;
     align-items: center;
-    /* Espacio a la izquierda para separarlo del menú */
     margin-left: 20px; 
     z-index: 10; 
 }
@@ -231,17 +233,15 @@ a {
     font-family: inherit; 
 }
 
-/* Redondear las esquinas externas del grupo */
-#btn-es {
+#btn-es, #btn-es-movil {
     border-radius: 4px 0 0 4px;
     border-right: none; 
 }
 
-#btn-en {
+#btn-en, #btn-en-movil {
     border-radius: 0 4px 4px 0;
 }
 
-/* Estilo para el botón activo (idioma actual) */
 .lang-btn.active {
     background-color: var(--color-secundario);
     color: var(--fondo-oscuro-base); 
@@ -249,7 +249,6 @@ a {
     cursor: default; 
 }
 
-/* Hover en botones inactivos */
 .lang-btn:not(.active):hover {
     background-color: var(--color-primario);
     border-color: var(--color-primario);
@@ -507,7 +506,7 @@ footer .container {
 }
 
 /* ========================================================= */
-/* RESPONSIVE BÁSICO (Móviles) */
+/* RESPONSIVE (Móviles) */
 /* ========================================================= */
 
 @media (max-width: 900px) {
@@ -516,46 +515,36 @@ footer .container {
         padding: 15px 20px;
     }
 
-    /* 1. LOGO MÁS PEQUEÑO EN MÓVIL */
     .logo-img {
         max-height: 35px; 
     }
     
-    /* 2. OCULTAR SELECTOR DE IDIOMA DEL HEADER */
-    .encabezado-principal > .selector-idioma {
-        display: none; /* Oculto en la barra de navegación en móvil */
+    .selector-idioma-escritorio {
+        display: none !important; 
     }
     
-    /* 3. MOSTRAR ITEM DE IDIOMA MÓVIL Y ESTILIZARLO DENTRO DEL MENÚ */
     .nav-idiomas-item-movil {
-        display: block; /* Hacemos visible el item contenedor */
+        display: block; 
         width: 100%;
         text-align: center;
-        padding: 20px 0 30px; /* Espaciado extra en móvil */
+        padding: 20px 0 30px; 
         border-bottom: 1px solid var(--fondo-oscuro-superficie); 
     }
 
-    /* El selector de idioma dentro del li móvil debe ser flex para centrar */
-    .nav-idiomas-item-movil .selector-idioma {
+    .selector-idioma-movil {
         display: flex; 
         justify-content: center;
         width: 100%;
         margin: 0;
         padding: 0;
     }
-
-    /* ------------------------------------------------ */
-    /* MENÚ RESPONSIVE: Despliegue de DERECHA a IZQUIERDA */
-    /* ------------------------------------------------ */
     
     .menu-toggle {
         display: block; 
     }
     
     .navegacion-principal {
-        /* Desactiva flex-grow: 1 en móvil */
         flex-grow: 0; 
-        
         position: fixed;
         top: 65px; 
         right: 0; 
@@ -563,9 +552,7 @@ footer .container {
         width: 100%; 
         height: 100vh; 
         background: var(--fondo-oscuro-base); 
-        
         transform: translateX(100%); 
-        
         transition: transform 0.4s ease-in-out;
         z-index: 999; 
         overflow-y: auto; 
@@ -593,12 +580,10 @@ footer .container {
         background-color: var(--fondo-oscuro-superficie);
     }
     
-    /* Animación de la Hamburguesa a "X" */
     .menu-toggle.menu-activo .bar:nth-child(2) { opacity: 0; }
     .menu-toggle.menu-activo .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .menu-toggle.menu-activo .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Otros ajustes responsive */
     .seccion-portada { min-height: 450px; }
     .contenido-portada h1 { font-size: 2.5em; }
     .contenido-portada p { font-size: 1.1em; }
