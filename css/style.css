@@ -87,7 +87,8 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil {
+/* Solo para botones grandes de contenido */
+.btn-primario, .btn-secundario {
     display: inline-block;
     padding: 16px 40px; 
     border-radius: 6px; 
@@ -98,20 +99,6 @@ a {
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-/* ESTILO DEL BOTÓN DE ESCRITORIO Y EL DE MÓVIL */
-.btn-cotizar, .btn-cotizar-nav-movil {
-    background: var(--color-secundario);
-    color: var(--color-terciario);
-    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
-}
-
-.btn-cotizar:hover, .btn-cotizar-nav-movil:hover {
-    background: var(--color-primario); 
-    color: var(--color-terciario); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
 }
 
 .btn-primario {
@@ -157,9 +144,18 @@ a {
 }
 
 .logo-img {
-    max-height: 45px; /* Valor original de escritorio */
+    max-height: 45px; 
     width: auto;
     display: block;
+}
+
+.navegacion-principal {
+    /* Permitir que el menú ocupe el espacio */
+    flex-grow: 1; 
+    display: flex;
+    
+    /* CORRECCIÓN: Centra los enlaces horizontalmente */
+    justify-content: center; 
 }
 
 .navegacion-principal ul {
@@ -183,8 +179,8 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
-/* OCULTAMOS EL ITEM DE COTIZAR MÓVIL EN ESCRITORIO */
-.nav-cotizar-item-movil {
+/* OCULTAMOS el item de idioma móvil en ESCRITORIO */
+.nav-idiomas-item-movil {
     display: none; 
 }
 
@@ -193,7 +189,7 @@ a {
 /* 1.1 ÍCONO DE MENÚ (HAMBURGUESA) - Estilos Base */
 /* ========================================================= */
 .menu-toggle {
-    display: none; /* Oculto por defecto en escritorio */
+    display: none; 
     background: transparent;
     border: none;
     cursor: pointer;
@@ -208,6 +204,55 @@ a {
     margin: 5px auto;
     background-color: var(--color-secundario);
     transition: all 0.3s ease-in-out;
+}
+
+/* ========================================================= */
+/* 1.2 SELECTOR DE IDIOMA (En el Header, a la derecha) */
+/* ========================================================= */
+
+.selector-idioma {
+    display: flex;
+    align-items: center;
+    /* Espacio a la izquierda para separarlo del menú */
+    margin-left: 20px; 
+    z-index: 10; 
+}
+
+.lang-btn {
+    background: transparent;
+    color: var(--color-terciario);
+    border: 1px solid var(--color-secundario);
+    padding: 8px 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    text-transform: uppercase;
+    font-family: inherit; 
+}
+
+/* Redondear las esquinas externas del grupo */
+#btn-es {
+    border-radius: 4px 0 0 4px;
+    border-right: none; 
+}
+
+#btn-en {
+    border-radius: 0 4px 4px 0;
+}
+
+/* Estilo para el botón activo (idioma actual) */
+.lang-btn.active {
+    background-color: var(--color-secundario);
+    color: var(--fondo-oscuro-base); 
+    border-color: var(--color-secundario);
+    cursor: default; 
+}
+
+/* Hover en botones inactivos */
+.lang-btn:not(.active):hover {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
 }
 
 
@@ -471,50 +516,54 @@ footer .container {
         padding: 15px 20px;
     }
 
-    /* === MODIFICACIONES SOLO EN MÓVIL === */
-
     /* 1. LOGO MÁS PEQUEÑO EN MÓVIL */
     .logo-img {
         max-height: 35px; 
     }
     
-    /* 2. OCULTAR BOTÓN COTIZAR DE ESCRITORIO */
-    .btn-cotizar {
-        display: none;
+    /* 2. OCULTAR SELECTOR DE IDIOMA DEL HEADER */
+    .encabezado-principal > .selector-idioma {
+        display: none; /* Oculto en la barra de navegación en móvil */
     }
     
-    /* 3. MOSTRAR ITEM DE COTIZAR MÓVIL Y ESTILIZARLO */
-    .nav-cotizar-item-movil {
-        display: block; /* Hacemos visible el item */
-        padding: 20px 0; 
+    /* 3. MOSTRAR ITEM DE IDIOMA MÓVIL Y ESTILIZARLO DENTRO DEL MENÚ */
+    .nav-idiomas-item-movil {
+        display: block; /* Hacemos visible el item contenedor */
+        width: 100%;
+        text-align: center;
+        padding: 20px 0 30px; /* Espaciado extra en móvil */
+        border-bottom: 1px solid var(--fondo-oscuro-superficie); 
     }
 
-    .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
-        width: 90%; 
-        margin: 0 auto;
-        display: block;
-        padding: 12px 20px; 
+    /* El selector de idioma dentro del li móvil debe ser flex para centrar */
+    .nav-idiomas-item-movil .selector-idioma {
+        display: flex; 
+        justify-content: center;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
-    
+
     /* ------------------------------------------------ */
     /* MENÚ RESPONSIVE: Despliegue de DERECHA a IZQUIERDA */
     /* ------------------------------------------------ */
     
     .menu-toggle {
-        display: block; /* Muestra el botón de hamburguesa en móvil */
+        display: block; 
     }
-
+    
     .navegacion-principal {
-        /* Estado por defecto: Oculto (fuera de pantalla a la DERECHA) */
+        /* Desactiva flex-grow: 1 en móvil */
+        flex-grow: 0; 
+        
         position: fixed;
         top: 65px; 
-        right: 0; /* Ancla a la derecha */
-        left: auto; /* Desactiva anclaje izquierdo */
-        width: 100%;
+        right: 0; 
+        left: auto; 
+        width: 100%; 
         height: 100vh; 
         background: var(--fondo-oscuro-base); 
         
-        /* DESPLIEGUE CLAVE: Comienza 100% fuera de la derecha */
         transform: translateX(100%); 
         
         transition: transform 0.4s ease-in-out;
@@ -522,9 +571,7 @@ footer .container {
         overflow-y: auto; 
     }
 
-    /* Clase que se activa con JavaScript para mostrar el menú */
     .navegacion-principal.menu-activo {
-        /* Se mueve a la posición 0 (visible) */
         transform: translateX(0); 
     }
 
@@ -545,69 +592,22 @@ footer .container {
         border-bottom: none; 
         background-color: var(--fondo-oscuro-superficie);
     }
+    
+    /* Animación de la Hamburguesa a "X" */
+    .menu-toggle.menu-activo .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.menu-activo .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.menu-activo .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* ------------------------------------------------ */
-    /* Animación de la Hamburguesa a "X" (sin cambios) */
-    /* ------------------------------------------------ */
-    .menu-toggle.menu-activo .bar:nth-child(2) {
-        opacity: 0; 
-    }
-
-    .menu-toggle.menu-activo .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg); 
-    }
-
-    .menu-toggle.menu-activo .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg); 
-    }
-
-    /* ------------------------------------------------ */
     /* Otros ajustes responsive */
-    /* ------------------------------------------------ */
-    .seccion-portada {
-        min-height: 450px;
-    }
-    
-    .contenido-portada {
-        padding: 0 20px;
-    }
-
-    .contenido-portada h1 {
-        font-size: 2.5em;
-    }
-    
-    .contenido-portada p {
-        font-size: 1.1em;
-    }
-
-    .seccion-marcas, .seccion-testimonios, .seccion-cta {
-        padding: 60px 0;
-    }
-
-    .contenido-cta h2 {
-        font-size: 2em;
-    }
-
-    .testimonios-grilla {
-        grid-template-columns: 1fr;
-    }
-
+    .seccion-portada { min-height: 450px; }
+    .contenido-portada h1 { font-size: 2.5em; }
+    .contenido-portada p { font-size: 1.1em; }
+    .seccion-marcas, .seccion-testimonios, .seccion-cta { padding: 60px 0; }
+    .contenido-cta h2 { font-size: 2em; }
+    .testimonios-grilla { grid-template-columns: 1fr; }
     footer .container {
         flex-direction: column;
         align-items: center;
         text-align: center;
-    }
-
-    .pie-info, .pie-enlaces, .pie-social {
-        flex-basis: 100%;
-        margin-bottom: 30px;
-    }
-    
-    .pie-enlaces a {
-        text-align: center;
-    }
-    
-    .pie-social a {
-        margin: 0 10px; 
     }
 }

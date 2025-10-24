@@ -516,13 +516,10 @@ footer .container {
         text-align: center;
     }
 
-    /* 🔑 A J U S T E   C R Í T I C O 🔑 */
     .logo-marca-full {
-        max-height: 50px; /* Reducido de 70px a 50px para móvil */
+        max-height: 50px; 
         margin-bottom: 15px; 
     }
-    /* ---------------------------------- */
-
 
     .contenido-marca {
         text-align: center;
