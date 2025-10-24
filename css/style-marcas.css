@@ -109,7 +109,7 @@ a {
     letter-spacing: 1px;
 }
 
-/* Las clases .btn-cotizar* ahora son enlaces normales de navegación, no CTA destacados */
+/* Las clases .btn-cotizar* ahora son enlaces normales de navegación */
 .btn-cotizar, .btn-cotizar-nav-movil, .btn-cotizar-nav {
     background: transparent;
     color: var(--color-terciario); 
@@ -230,7 +230,7 @@ a {
     border-bottom: none; /* Empezamos sin borde */
 }
 
-/* CORRECCIÓN: Aplicamos el hover de la navegación de forma específica */
+/* Aplicamos el hover de la navegación de forma específica al botón cotizar (ahora es un enlace) */
 .nav-cotizar-item-escritorio .btn-cotizar-nav:hover {
     color: var(--color-secundario);
     border-bottom: 3px solid var(--color-secundario);
@@ -444,21 +444,37 @@ footer .container {
     border-bottom: 1px solid var(--color-primario); 
 }
 
+/* CORRECCIÓN DE ALINEACIÓN VERTICAL */
 .pie-info h3 {
     color: var(--color-terciario);
+    margin-top: 0; 
     margin-bottom: 15px;
     font-size: 1.6em;
 }
 
 .pie-enlaces h4 {
     color: var(--color-secundario); 
+    margin-top: 0; 
     margin-bottom: 10px;
+}
+
+/* CORRECCIÓN DE ESPACIADO DE ENLACES DE LISTA (FUERZA MARGEN 0) */
+.pie-enlaces ul {
+    list-style: none;
+    margin: 0; 
+    padding: 0; 
+}
+
+.pie-enlaces ul li {
+    margin: 0 !important; 
+    padding: 0 !important; 
+    line-height: 1.2; 
 }
 
 .pie-enlaces a {
     color: var(--color-terciario);
     display: block;
-    padding: 5px 0;
+    padding: 5px 0; /* Controla el espaciado vertical ÚNICO */
 }
 
 .pie-enlaces a:hover {
@@ -467,6 +483,7 @@ footer .container {
 
 .pie-social h4 {
     color: var(--color-secundario); 
+    margin-top: 0; 
     margin-bottom: 10px;
 }
 
@@ -577,33 +594,33 @@ footer .container {
         display: block !important; 
         width: 100%;
         text-align: center;
-        padding: 20px 0 0; 
-        /* Separador superior */
-        border-top: 1px solid var(--fondo-oscuro-superficie); 
+        /* Quitamos el padding superior y el borde para que se integre a la lista */
+        padding: 0; 
+        border-top: none; 
     }
 
     .nav-idiomas-item-movil .selector-idioma {
-        display: flex; /* Asegura que el clon se muestre como flex */
+        display: flex; 
         justify-content: center;
         width: 100%;
-        margin: 0;
+        margin: 20px 0; /* Agregamos margen arriba y abajo para separarlo */
         padding: 0;
     }
-
-    /* Mostrar el botón de Cotizar móvil como enlace normal */
+    
+    /* El botón de Cotizar es el ÚLTIMO ítem de la lista */
     .nav-cotizar-item-movil {
         display: block !important; 
-        padding: 20px 0 30px; /* Separación abajo */
+        /* Usamos padding-bottom para darle espacio abajo del último enlace */
+        padding: 0 0 30px; 
     }
     
     .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
-        /* Restablecemos a un enlace con padding */
+        /* Mantiene el estilo de enlace normal del menú */
         width: auto; 
         margin: 0;
         display: block;
         padding: 18px 25px; 
         text-align: center;
-        /* Y le damos el mismo estilo hover y borde inferior del menú */
         border-bottom: 1px solid var(--fondo-oscuro-superficie);
     }
     
