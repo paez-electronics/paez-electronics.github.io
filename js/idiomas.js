@@ -1,21 +1,21 @@
 const translations = {
-    // Claves de Navegación y Footer (ya existían)
+    // Claves de Navegación y Footer
     inicio_nav: { es: 'Inicio', en: 'Home' },
     marcas_nav: { es: 'Marcas', en: 'Brands' },
     contacto_nav: { es: 'Contacto', en: 'Contact' },
     cotizar_nav_header: { es: 'Cotizar', en: 'Get Quote' }, 
 
-    // Claves de la Portada de Inicio (ya existían)
+    // Claves de la Portada de Inicio
     portada_titulo: { es: 'Lideres en Control Industrial y Soluciones', en: 'Leaders in Industrial Control and Solutions' },
     portada_subtitulo: { es: 'Paez Electronics LLC: Transformando procesos con tecnología de automatización de vanguardia.', en: 'Paez Electronics LLC: Transforming processes with cutting-edge automation technology.' },
     portada_cta: { es: 'Empieza a Optimizar Hoy', en: 'Start Optimizing Today' },
 
-    // Claves de la Sección de Marcas en Inicio (ya existían)
+    // Claves de la Sección de Marcas en Inicio
     marcas_titulo: { es: 'Trabajamos con las Marcas Líderes Globales', en: 'We Work with Global Leading Brands' },
     marcas_subtitulo: { es: 'Solo integramos componentes de alta calidad y reconocimiento internacional.', en: 'We only integrate high-quality, internationally recognized components.' },
     marcas_ver_mas: { es: 'Ver mas', en: 'See More' },
     
-    // Claves de la CTA y Testimonios (ya existían)
+    // Claves de la CTA y Testimonios
     cta_titulo: { es: '¿Listo para Automatizar tu Negocio?', en: 'Ready to Automate Your Business?' },
     cta_subtitulo: { es: 'Describe tu proyecto o necesidad específica para recibir una propuesta personalizada y sin compromiso.', en: 'Describe your specific project or need to receive a personalized, no-obligation proposal.' },
     cta_btn: { es: 'Solicitar Cotización Detallada', en: 'Request Detailed Quote' },
@@ -30,7 +30,7 @@ const translations = {
     testimonio_3_nombre: { es: 'Javier S.', en: 'Javier S.' },
     testimonio_3_cargo: { es: 'Jefe de Compras, Fabricación de Maquinaria', en: 'Purchasing Manager, Machinery Manufacturing' },
 
-    // Claves del Footer (ya existían)
+    // Claves del Footer
     pie_info_titulo: { es: 'Paez Electronics LLC', en: 'Paez Electronics LLC' },
     pie_info_texto: { es: 'Especialistas en soluciones de Automatización Industrial y Control de Procesos.', en: 'Specialists in Industrial Automation and Process Control solutions.' },
     pie_enlaces_titulo: { es: 'Enlaces Rápidos', en: 'Quick Links' },
@@ -41,7 +41,37 @@ const translations = {
     pie_copyright: { es: '© 2025 Paez Electronics LLC. Todos los derechos reservados.', en: '© 2025 Paez Electronics LLC. All rights reserved.' },
 
     // =========================================================================
-    //  NUEVAS CLAVES AÑADIDAS PARA LA PÁGINA 'marcas.html' (ya existían)
+    // CLAVES DE TRADUCCIÓN PARA 'cotizar.html'
+    // =========================================================================
+    'title-cotizar': { es: 'Solicitud de Cotización | Paez Electronics', en: 'Quote Request | Paez Electronics' },
+    'cotizar-titulo': { es: 'Solicitud Detallada de Cotización', en: 'Detailed Quote Request' },
+    'cotizar-subtitulo': { es: 'Complete los campos a continuación para que nuestro equipo pueda preparar una oferta precisa para sus requerimientos de automatización.', en: 'Fill in the fields below so our team can prepare an accurate offer for your automation requirements.' },
+    
+    // Datos de Contacto
+    'cotizar-legend-contacto': { es: 'Datos de Contacto y Empresa', en: 'Contact and Company Information' },
+    'cotizar-label-nombre': { es: 'Nombre Completo *', en: 'Full Name *' },
+    'cotizar-label-empresa': { es: 'Empresa / Razón Social *', en: 'Company / Business Name *' },
+    'cotizar-label-email': { es: 'Email Empresarial *', en: 'Business Email *' },
+    'cotizar-label-telefono': { es: 'Teléfono de Contacto', en: 'Contact Phone' },
+
+    // Detalles de la Solicitud
+    'cotizar-legend-detalles': { es: 'Detalles de la Solicitud', en: 'Request Details' },
+    'cotizar-label-marca': { es: 'Marca de Preferencia *', en: 'Preferred Brand *' },
+    'cotizar-opt-seleccione': { es: 'Seleccione una marca', en: 'Select a brand' },
+    'cotizar-opt-cualquiera': { es: 'Cualquiera de las anteriores', en: 'Any of the above' },
+    'cotizar-label-lista': { es: 'Lista de Productos', en: 'Product List' },
+    'placeholder-lista': { es: 'Especifique códigos de partes, cantidades y marcas preferidas. (Ej: CHINT NB1-63/2P C16 - 10 unidades)', en: 'Specify part codes, quantities, and preferred brands. (Ex: CHINT NB1-63/2P C16 - 10 units)' }, 
+    'cotizar-hint-lista': { es: 'Cuanto más detallada sea su lista, más rápido y precisa será la cotización.', en: 'The more detailed your list, the faster and more accurate the quote will be.' },
+
+    // Información Adicional
+    'cotizar-legend-adicional': { es: 'Información Adicional', en: 'Additional Information' },
+    'cotizar-label-comentarios': { es: 'Comentarios o Requerimientos Especiales', en: 'Comments or Special Requirements' },
+    'placeholder-comentarios': { es: 'Tiempo de entrega requerido, ubicación, u otros detalles relevantes.', en: 'Required delivery time, location, or other relevant details.' },
+    'cotizar-btn-enviar': { es: 'Enviar Solicitud de Cotización Rápida', en: 'Send Quick Quote Request' },
+    'cotizar-nota-obligatorio': { es: '(*) Campos obligatorios.', en: '(*) Required fields.' },
+    
+    // =========================================================================
+    // CLAVES DE TRADUCCIÓN PARA 'marcas.html'
     // =========================================================================
     marcas_portada_titulo: { es: 'Componentes de Calidad Certificada', en: 'Certified Quality Components' },
     marcas_portada_subtitulo: { es: 'Trabajamos solo con marcas líderes globales, sinónimo de fiabilidad y rendimiento industrial.', en: 'We only work with global leading brands, synonymous with reliability and industrial performance.' },
@@ -59,7 +89,7 @@ const translations = {
     totalquality_desc: { es: 'Firma especializada en herramientas y accesorios que cumplen con los más altos estándares de calidad, necesarios para el mantenimiento y montaje de sistemas de control.', en: 'Firm specializing in tools and accessories that meet the highest quality standards, necessary for the maintenance and assembly of control systems.' },
 
     // =========================================================================
-    //  NUEVAS CLAVES AÑADIDAS PARA LA PÁGINA 'contacto.html'
+    // CLAVES DE TRADUCCIÓN PARA 'contacto.html'
     // =========================================================================
     contacto_portada_titulo: { es: 'Hablemos de Automatización', en: 'Let\'s Talk About Automation' },
     contacto_portada_subtitulo: { es: 'Contáctenos para una cotización, soporte técnico o resolver cualquier duda sobre su proyecto industrial.', en: 'Contact us for a quote, technical support, or to resolve any questions about your industrial project.' },
@@ -70,15 +100,29 @@ const translations = {
 };
 
 const setLanguage = (lang) => {
-    document.querySelectorAll('[data-key]').forEach(el => {
+    // Buscar elementos que tengan data-key para texto o data-key-placeholder para atributos
+    document.querySelectorAll('[data-key], [data-key-placeholder]').forEach(el => {
         const key = el.getAttribute('data-key');
-        if (translations[key] && translations[key][lang]) {
-            el.textContent = translations[key][lang];
+        const placeholderKey = el.getAttribute('data-key-placeholder');
+        
+        // 1. Traducción del texto (textContent) - Se aplica a labels, options, párrafos, etc.
+        if (key && translations[key] && translations[key][lang]) {
+            if (el.tagName === 'TITLE') {
+                document.title = translations[key][lang];
+            } else {
+                el.textContent = translations[key][lang];
+            }
+        }
+
+        // 2. Traducción del placeholder (atributo) - Se aplica a input/textarea
+        if (placeholderKey && translations[placeholderKey] && translations[placeholderKey][lang]) {
+            el.setAttribute('placeholder', translations[placeholderKey][lang]);
         }
     });
 
     document.documentElement.lang = lang;
     
+    // Manejo de botones de idioma
     document.querySelectorAll('.lang-btn').forEach(button => {
         if (button.getAttribute('data-lang') === lang) {
             button.classList.add('active');

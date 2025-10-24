@@ -1,8 +1,10 @@
+/* ========================================================= */
+/* VARIABLES */
+/* ========================================================= */
 :root {
     --color-primario: #1f4586;
     --color-secundario: #1871ac;
     --color-terciario: #ffffff;
-    --color-claro: #6cbff7; /* Usado para acentos de luz */
     
     --fondo-oscuro-base: #0e1e3b;
     --fondo-oscuro-superficie: #142a52;
@@ -13,7 +15,7 @@
 }
 
 /* ========================================================= */
-/* 0. FONDO FIJO */
+/* 0. FONDO FIJO, BASE & TIPOGRAFÍA */
 /* ========================================================= */
 
 .fondo-fijo {
@@ -30,15 +32,11 @@
     background-repeat: no-repeat;
 }
 
-
-/* ========================================================= */
-/* BASE & TIPOGRAFÍA */
-/* ========================================================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth; 
 }
 
 body {
@@ -46,30 +44,21 @@ body {
     line-height: 1.6;
     color: var(--color-terciario); 
     background-color: transparent; 
-    scroll-behavior: smooth; 
-    /* INCLUIDO: Corrección para evitar desplazamiento horizontal */
-    overflow-x: hidden; 
-}
-
-/* INCLUIDO: Clase para bloquear el scroll vertical al abrir el menú */
-.no-scroll {
-    overflow: hidden;
 }
 
 section, footer {
     background-color: var(--fondo-oscuro-base); 
 }
 
-
 .container {
     width: 90%;
-    max-width: 1200px; /* Reducido para centrar el formulario */
+    max-width: 1600px; 
     margin: 0 auto;
 }
 
 h1, h2, h3 {
     margin-bottom: 0.5em;
-    color: var(--color-claro); 
+    color: var(--color-blanco); 
 }
 
 h2 {
@@ -81,7 +70,7 @@ h2 {
 
 .subtitle {
     text-align: center;
-    color: var(--color-claro); 
+    color: var(--color-terciario); 
     margin-bottom: 70px; 
     font-size: 1.2em;
 }
@@ -96,7 +85,7 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-.btn-cotizar, .btn-primario, .btn-secundario, .btn-cotizar-nav-movil { 
+.btn-primario, .btn-secundario {
     display: inline-block;
     padding: 16px 40px; 
     border-radius: 6px; 
@@ -109,37 +98,12 @@ a {
     letter-spacing: 1px;
 }
 
-.btn-cotizar, .btn-cotizar-nav-movil { 
-    background: var(--color-secundario);
-    color: var(--color-terciario);
-    box-shadow: 0 4px 10px rgba(24, 113, 172, 0.4); 
-}
-
-.btn-cotizar.active-btn, .btn-cotizar-nav-movil.active-btn-movil {
-    background: var(--color-primario); 
-    color: var(--color-terciario); 
-    box-shadow: 0 4px 10px rgba(31, 69, 134, 0.6); 
-}
-
-.btn-cotizar:hover, .btn-cotizar-nav-movil:hover {
-    background: var(--color-primario); 
-    color: var(--color-terciario); 
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(31, 69, 134, 0.6); 
-}
-
 .btn-primario {
     background: var(--color-primario);
     color: var(--color-terciario); 
     margin-top: 25px;
     font-size: 1.2em;
     box-shadow: 0 4px 10px rgba(31, 69, 134, 0.4);
-}
-
-.btn-primario.large-btn {
-    padding: 20px 40px;
-    font-size: 1.4em;
-    margin-top: 40px;
 }
 
 .btn-primario:hover {
@@ -149,7 +113,7 @@ a {
 }
 
 /* ========================================================= */
-/* 1. NAVEGACIÓN (ENCABEZADO) */
+/* 1. NAVEGACIÓN (HEADER) */
 /* ========================================================= */
 
 .encabezado-principal {
@@ -162,13 +126,18 @@ a {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 3px solid var(--color-secundario);
 }
 
 .logo-img {
     max-height: 45px; 
     width: auto;
     display: block;
+}
+
+.navegacion-principal {
+    flex-grow: 1; 
+    display: flex;
+    justify-content: center; 
 }
 
 .navegacion-principal ul {
@@ -192,21 +161,17 @@ a {
     border-bottom: 3px solid var(--color-secundario); 
 }
 
-/* Oculta el botón de Cotizar móvil en escritorio */
-.nav-cotizar-item-movil {
-    display: none;	
+.nav-idiomas-item-movil {
+    display: none; 
 }
 
-/* ========================================================= */
-/* 1.1 ÍCONO DE MENÚ (HAMBURGUESA) - Estilos Base */
-/* ========================================================= */
 .menu-toggle {
-    display: none; /* Oculto por defecto en escritorio */
+    display: none; 
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;	
+    z-index: 1001; 
 }
 
 .menu-toggle .bar {
@@ -218,23 +183,96 @@ a {
     transition: all 0.3s ease-in-out;
 }
 
-.menu-toggle.menu-activo .bar:nth-child(2) {
-    opacity: 0;	
+.selector-idioma-escritorio { display: flex; }
+.selector-idioma-movil { display: none; }
+.selector-idioma { display: flex; align-items: center; margin-left: 20px; z-index: 10; }
+.lang-btn {
+    background: transparent; color: var(--color-terciario); border: 1px solid var(--color-secundario); 
+    padding: 8px 12px; font-size: 0.9em; font-weight: 600; cursor: pointer; 
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; text-transform: uppercase; font-family: inherit; 
 }
-.menu-toggle.menu-activo .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);	
-}
-.menu-toggle.menu-activo .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);	
-}
+#btn-es, #btn-es-movil { border-radius: 4px 0 0 4px; border-right: none; }
+#btn-en, #btn-en-movil { border-radius: 0 4px 4px 0; }
+.lang-btn.active { background-color: var(--color-secundario); color: var(--fondo-oscuro-base); border-color: var(--color-secundario); cursor: default; }
+.lang-btn:not(.active):hover { background-color: var(--color-primario); border-color: var(--color-primario); }
+
 
 /* ========================================================= */
-/* 3. SECCIÓN COTIZACIÓN (Formulario Detallado) */
+/* 6. PIE DE PÁGINA (FOOTER) */
+/* ========================================================= */
+
+footer {
+    background: var(--fondo-oscuro-base); 
+    color: var(--color-terciario);
+    padding: 50px 0 20px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-primario); 
+}
+
+.pie-info h3 { color: var(--color-terciario); margin-bottom: 15px; font-size: 1.6em; }
+.pie-enlaces h4 { color: var(--color-secundario); margin-bottom: 10px; }
+.pie-enlaces a { color: var(--color-terciario); display: block; padding: 5px 0; }
+.pie-enlaces a:hover { color: var(--color-secundario); }
+.pie-social h4 { color: var(--color-secundario); margin-bottom: 10px; }
+.pie-social a { color: var(--color-terciario); font-size: 2em; margin-right: 20px; }
+.pie-social a:hover { color: var(--color-secundario); }
+.copyright { text-align: center; margin-top: 30px; font-size: 0.9em; color: var(--color-terciario); }
+
+/* ========================================================= */
+/* RESPONSIVE (Móviles) */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+    .encabezado-principal { padding: 15px 20px; }
+    .logo-img { max-height: 35px; }
+    .selector-idioma-escritorio { display: none !important; }
+    .nav-idiomas-item-movil { 
+        display: block; width: 100%; text-align: center; padding: 20px 0 30px; 
+        border-bottom: 1px solid var(--fondo-oscuro-superficie); 
+    }
+    .selector-idioma-movil { display: flex; justify-content: center; width: 100%; margin: 0; padding: 0; }
+    .menu-toggle { display: block; }
+    .navegacion-principal { 
+        flex-grow: 0; position: fixed; top: 65px; right: 0; left: auto; width: 100%; height: 100vh; 
+        background: var(--fondo-oscuro-base); transform: translateX(100%); transition: transform 0.4s ease-in-out;
+        z-index: 999; overflow-y: auto; 
+    }
+    .navegacion-principal.menu-activo { transform: translateX(0); }
+    .navegacion-principal ul { flex-direction: column; padding: 20px 0; align-items: stretch; }
+    .navegacion-principal ul li a { 
+        padding: 18px 25px; text-align: center; border-bottom: 1px solid var(--fondo-oscuro-superficie); 
+        font-size: 1.1em;
+    }
+    .navegacion-principal ul li a:hover, .navegacion-principal ul li a.active { 
+        border-bottom: none; background-color: var(--fondo-oscuro-superficie);
+    }
+    .menu-toggle.menu-activo .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.menu-activo .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.menu-activo .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    
+    footer .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
+/* ========================================================= */
+/* ESTILOS ESPECÍFICOS: SECCIÓN COTIZACIÓN */
 /* ========================================================= */
 
 .seccion-cotizar {
     padding: 80px 0;
-    background: none;
+    background: none; 
+    min-height: 80vh;
 }
 
 .titulo-cotizar {
@@ -247,6 +285,8 @@ a {
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     border: 1px solid var(--color-primario);
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .formulario-cotizar {
@@ -263,7 +303,7 @@ a {
 
 .grupo-campo legend {
     font-size: 1.6em;
-    color: var(--color-claro);
+    color: var(--color-blanco);
     font-weight: 700;
     padding: 0 10px;
 }
@@ -289,26 +329,24 @@ a {
     font-size: 1em;
 }
 
-.formulario-cotizar input[type="text"],
-.formulario-cotizar input[type="email"],
-.formulario-cotizar input[type="tel"],
+.formulario-cotizar input,
 .formulario-cotizar select,
 .formulario-cotizar textarea {
     padding: 12px;
     border: 1px solid var(--color-primario);
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.2);
-    color: var(--color-claro);
+    /* Fondo de casilla oscuro y sólido */
+    background: var(--fondo-oscuro-superficie); 
+    /* Texto blanco para que resalte */
+    color: var(--color-blanco); 
     font-size: 1em;
     transition: border-color 0.3s;
     width: 100%;
 }
 
 .formulario-cotizar select {
-    appearance: none; /* Quita el estilo nativo en Chrome/Firefox */
-    padding-right: 30px; /* Espacio para flecha custom */
-    background: var(--fondo-oscuro-base);
-    background-size: 12px;
+    appearance: none; 
+    padding-right: 30px; 
 }
 
 .formulario-cotizar textarea {
@@ -336,179 +374,23 @@ a {
     font-size: 0.9em;
 }
 
-/* ========================================================= */
-/* 6. PIE DE PÁGINA (FOOTER) */
-/* ========================================================= */
-
-footer {
-    background: var(--fondo-oscuro-base); 
-    color: var(--color-terciario);
-    padding: 50px 0 20px;
-    border-top: 1px solid var(--color-primario); 
+.btn-primario.large-btn {
+    padding: 20px 40px;
+    font-size: 1.4em;
+    margin-top: 40px;
 }
 
-footer .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--color-primario); 
-}
-
-.pie-info h3 {
-    color: var(--color-claro);
-    margin-bottom: 15px;
-    font-size: 1.6em;
-}
-
-.pie-enlaces h4 {
-    color: var(--color-claro); 
-    margin-bottom: 10px;
-}
-
-.pie-enlaces a {
-    color: var(--color-terciario);
-    display: block;
-    padding: 5px 0;
-}
-
-.pie-enlaces a:hover {
-    color: var(--color-secundario);
-}
-
-.pie-social h4 {
-    color: var(--color-claro); 
-    margin-bottom: 10px;
-}
-
-.pie-social a {
-    color: var(--color-terciario);
-    font-size: 2em; 
-    margin-right: 20px;
-}
-
-.pie-social a:hover {
-    color: var(--color-secundario);
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.9em;
-    color: var(--color-terciario);
-}
-
-/* ========================================================= */
-/* RESPONSIVE AJUSTADO (Móviles) */
-/* ========================================================= */
-
-@media (max-width: 900px) {
-    
-    .encabezado-principal {
-        padding: 15px 20px;
-    }
-
-    /* CORRECCIÓN DE LOGO */
-    .logo-img {
-        max-height: 35px; /* Tamaño reducido para móvil */
-    }
-    
-    /* Mostrar el toggle y Ocultar botón de escritorio */
-    .menu-toggle {
-        display: block;
-    }
-
-    .btn-cotizar {
-        display: none; /* Ocultar el botón Cotizar de escritorio */
-    }
-    
-    /* Configuración del menú desplegable */
-    .navegacion-principal {
-        /* ESTAS SON LAS REGLAS CRÍTICAS PARA EL DESPLAZAMIENTO */
-        position: fixed;
-        top: 65px; 
-        left: 100vw; /* Inicia fuera de la pantalla */
-        
-        width: 100vw; 
-        height: 100vh;	
-        background: var(--fondo-oscuro-base);	
-        
-        transition: left 0.4s ease-in-out; 
-        z-index: 999;	
-        overflow-y: auto;	
-        
-        /* Asegura que el contenedor de navegación se muestre, no solo su contenido */
-        display: block; 
-    }
-
-    /* VISIBLE: Desliza el menú a la izquierda */
-    .navegacion-principal.menu-activo {
-        left: 0; 
-    }
-    
-    .navegacion-principal ul {
-        flex-direction: column;	
-        padding: 20px 20px; 
-        align-items: stretch;
-    }
-    
-    .navegacion-principal ul li a {
-        padding: 18px 25px;	
-        text-align: center;
-        border-bottom: 1px solid var(--fondo-oscuro-superficie);	
-        font-size: 1.1em;
-    }
-
-    .navegacion-principal ul li a:hover, 
-    .navegacion-principal ul li a.active,
-    .navegacion-principal ul li a.active-btn-movil { 
-        border-bottom: none;	
-        background-color: var(--fondo-oscuro-superficie);
-    }
-    
-    /* Mostrar el botón de Cotizar Móvil */
-    .nav-cotizar-item-movil {
-        display: block; 
-        padding: 20px 0;	
-    }
-
-    .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
-        width: 100%;	
-        margin: 0 auto;
-        display: block;
-        padding: 12px 20px;	
-    }
-
-    /* --- Ajustes al formulario --- */
-    
-    .seccion-cotizar {
-        padding: 40px 0;
-    }
-
+@media (max-width: 768px) {
     .contenedor-formulario {
         padding: 20px;
     }
-
-    .titulo-cotizar .subtitle {
-        margin-bottom: 40px;
-    }
-
     .grilla-campos.col-2 {
-        grid-template-columns: 1fr; /* Una columna en móvil */
+        grid-template-columns: 1fr;
     }
-
     .grupo-campo legend {
         font-size: 1.4em;
     }
-
-    .btn-primario.large-btn {
-        font-size: 1.2em;
-    }
-
-    footer .container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    .seccion-cotizar {
+        padding: 40px 0;
     }
 }

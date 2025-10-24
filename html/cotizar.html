@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de Cotización | Paez Electronics</title>
+    <title data-key="title-cotizar">Solicitud de Cotización | Paez Electronics</title>
     
     <link rel="icon" type="image/png" href="../img/logo-icono.png"> 
     
-    <link rel="stylesheet" href="../css/style-cotizar.css">
+    <link rel="stylesheet" href="../css/style-cotizar.css"> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -20,166 +20,130 @@
             <img src="../img/logo-blanco.png" alt="Paez Electronics" class="logo-img"> 
         </a> 
         
-        <button class="menu-toggle" aria-label="Abrir Menú">
+        <button class="menu-toggle" aria-label="Abrir menú de navegación">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
-        
+
         <nav class="navegacion-principal">
             <ul>
-                <li><a href="marcas.html">Marcas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="marcas.html" data-key="marcas_nav">Marcas</a></li>
+                <li><a href="contacto.html" data-key="contacto_nav">Contacto</a></li>
+                <li><a href="cotizar.html" data-key="cotizar_nav_header" class="active">Cotizar</a></li>
                 
-                <li class="nav-cotizar-item-movil">
-                    <a href="cotizar.html" class="btn-cotizar-nav-movil active-btn-movil">COTIZAR</a>
+                <li class="nav-idiomas-item-movil">
+                    <div class="selector-idioma selector-idioma-movil">
+                        <button id="btn-es-movil" class="lang-btn active" data-lang="es">ES</button>
+                        <button id="btn-en-movil" class="lang-btn" data-lang="en">EN</button>
+                    </div>
                 </li>
             </ul>
         </nav>
-        <a href="cotizar.html" class="btn-cotizar active-btn">Cotizar</a>
-    </header>
-
-    <section class="seccion-cotizar" id="formulario-cotizar">
-    <div class="container">
-        <div class="titulo-cotizar">
-            <h2>Solicitud Detallada de Cotización</h2>
-            <p class="subtitle">Complete los campos a continuación para que nuestro equipo pueda preparar una oferta precisa para sus requerimientos de automatización.</p>
-        </div>
         
-        <div class="contenedor-formulario">
-           <form class="formulario-cotizar" id="cotizacionForm" action="https://formspree.io/f/xpwykrne" method="POST"> 
-                
-           <fieldset class="grupo-campo">
-                    <legend>Datos de Contacto y Empresa</legend>
-                    <div class="grilla-campos col-2">
-                        <div class="input-grupo">
-                            <label for="nombre">Nombre Completo *</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="input-grupo">
-                            <label for="empresa">Empresa / Razón Social *</label>
-                            <input type="text" id="empresa" name="empresa" required>
-                        </div>
-                        <div class="input-grupo">
-                            <label for="email">Email Empresarial *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="input-grupo">
-                            <label for="telefono">Teléfono de Contacto</label>
-                            <input type="tel" id="telefono" name="telefono">
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset class="grupo-campo">
-                    <legend>Detalles de la Solicitud</legend>
-                    <div class="campos-stacked">
-                        <div class="input-grupo">
-                            <label for="marca_preferencia">Marca de Preferencia *</label>
-                            <select id="marca_preferencia" name="marca_preferencia" required>
-                                <option value="">Seleccione una marca</option>
-                                <option value="Chint">Chint</option>
-                                <option value="Ebchq">Ebchq</option>
-                                <option value="Autonics">Autonics</option>
-                                <option value="Onka">Onka</option>
-                                <option value="LS">LS</option>
-                                <option value="Andeli">Andeli</option>
-                                <option value="Exceline">Exceline</option>
-                                <option value="Schneider">Schneider</option>
-                                <option value="Total_Quality">Total Quality</option>
-                                <option value="CUALQUIERA">Cualquiera de las anteriores</option>
-                            </select>
-                        </div>
-                        <div class="input-grupo">
-                            <label for="lista_materiales">Lista de Productos</label>
-                            <textarea id="lista_materiales" name="lista_materiales" rows="8" placeholder="Especifique códigos de partes, cantidades y marcas preferidas. (Ej: CHINT NB1-63/2P C16 - 10 unidades)" required></textarea>
-                            <small class="hint">Cuanto más detallada sea su lista, más rápido y precisa será la cotización.</small>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset class="grupo-campo">
-                    <legend>Información Adicional</legend>
-                    <div class="input-grupo">
-                        <label for="comentarios">Comentarios o Requerimientos Especiales</label>
-                        <textarea id="comentarios" name="comentarios" rows="4" placeholder="Tiempo de entrega requerido, ubicación, u otros detalles relevantes."></textarea>
-                    </div>
-                </fieldset>
-
-                <button type="submit" class="btn-primario full-width large-btn">Enviar Solicitud de Cotización Rápida</button>
-                <p class="required-note">(*) Campos obligatorios.</p>
-            </form>
+        <div class="selector-idioma selector-idioma-escritorio">
+            <button id="btn-es" class="lang-btn active" data-lang="es">ES</button>
+            <button id="btn-en" class="lang-btn" data-lang="en">EN</button>
         </div>
-    </div>
-</section>
+    </header>
+    <section class="seccion-cotizar" id="formulario-cotizar">
+        <div class="container">
+            <div class="titulo-cotizar">
+                <h2 data-key="cotizar-titulo">Solicitud Detallada de Cotización</h2>
+                <p class="subtitle" data-key="cotizar-subtitulo">Complete los campos a continuación para que nuestro equipo pueda preparar una oferta precisa para sus requerimientos de automatización.</p>
+            </div>
+            
+            <div class="contenedor-formulario">
+                <form class="formulario-cotizar" id="cotizacionForm" action="https://formspree.io/f/xpwykrne" method="POST"> 
+                    
+                    <fieldset class="grupo-campo">
+                        <legend data-key="cotizar-legend-contacto">Datos de Contacto y Empresa</legend>
+                        <div class="grilla-campos col-2">
+                            <div class="input-grupo">
+                                <label for="nombre" data-key="cotizar-label-nombre">Nombre Completo *</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="input-grupo">
+                                <label for="empresa" data-key="cotizar-label-empresa">Empresa / Razón Social *</label>
+                                <input type="text" id="empresa" name="empresa" required>
+                            </div>
+                            <div class="input-grupo">
+                                <label for="email" data-key="cotizar-label-email">Email Empresarial *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="input-grupo">
+                                <label for="telefono" data-key="cotizar-label-telefono">Teléfono de Contacto</label>
+                                <input type="tel" id="telefono" name="telefono">
+                            </div>
+                        </div>
+                    </fieldset>
 
-    <footer id="pie-cotizar"> 
+                    <fieldset class="grupo-campo">
+                        <legend data-key="cotizar-legend-detalles">Detalles de la Solicitud</legend>
+                        <div class="campos-stacked">
+                            <div class="input-grupo">
+                                <label for="marca_preferencia" data-key="cotizar-label-marca">Marca de Preferencia *</label>
+                                <select id="marca_preferencia" name="marca_preferencia" required>
+                                    <option value="" data-key="cotizar-opt-seleccione">Seleccione una marca</option>
+                                    <option value="Chint">Chint</option>
+                                    <option value="Ebchq">Ebchq</option>
+                                    <option value="Autonics">Autonics</option>
+                                    <option value="Onka">Onka</option>
+                                    <option value="LS">LS</option>
+                                    <option value="Andeli">Andeli</option>
+                                    <option value="Exceline">Exceline</option>
+                                    <option value="Schneider">Schneider</option>
+                                    <option value="Total_Quality">Total Quality</option>
+                                    <option value="CUALQUIERA" data-key="cotizar-opt-cualquiera">Cualquiera de las anteriores</option>
+                                </select>
+                            </div>
+                            <div class="input-grupo">
+                                <label for="lista_materiales" data-key="cotizar-label-lista">Lista de Productos</label>
+                                <textarea id="lista_materiales" name="lista_materiales" rows="8" data-key-placeholder="placeholder-lista" placeholder="Especifique códigos de partes, cantidades y marcas preferidas. (Ej: CHINT NB1-63/2P C16 - 10 unidades)" required></textarea>
+                                <small class="hint" data-key="cotizar-hint-lista">Cuanto más detallada sea su lista, más rápido y precisa será la cotización.</small>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="grupo-campo">
+                        <legend data-key="cotizar-legend-adicional">Información Adicional</legend>
+                        <div class="input-grupo">
+                            <label for="comentarios" data-key="cotizar-label-comentarios">Comentarios o Requerimientos Especiales</label>
+                            <textarea id="comentarios" name="comentarios" rows="4" data-key-placeholder="placeholder-comentarios" placeholder="Tiempo de entrega requerido, ubicación, u otros detalles relevantes."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="btn-primario full-width large-btn" data-key="cotizar-btn-enviar">Enviar Solicitud de Cotización Rápida</button>
+                    <p class="required-note" data-key="cotizar-nota-obligatorio">(*) Campos obligatorios.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="pie-contacto"> 
         <div class="container">
             <div class="pie-info">
-                <h3>Paez Electronics LLC</h3>
-                <p>Especialistas en soluciones de Automatización Industrial y Control de Procesos.</p>
+                <h3 data-key="pie_info_titulo">Paez Electronics LLC</h3>
+                <p data-key="pie_info_texto">Especialistas en soluciones de Automatización Industrial y Control de Procesos.</p>
             </div>
             <div class="pie-enlaces">
-                <h4>Enlaces Rápidos</h4>
+                <h4 data-key="pie_enlaces_titulo">Enlaces Rápidos</h4>
                 <ul>
-                    <li><a href="marcas.html">Marcas</a></li>
-                    <li><a href="contacto.html">Contacto</a></li> 
-                    <li><a href="cotizar.html">Cotizar</a></li>
+                    <li><a href="marcas.html" data-key="pie_enlaces_marcas">Marcas</a></li>
+                    <li><a href="contacto.html" data-key="pie_enlaces_contacto">Contacto</a></li> 
+                    <li><a href="cotizar.html" data-key="pie_enlaces_cotizar">Cotizar</a></li>
                 </ul>
             </div>
             <div class="pie-social">
-                <h4>Síguenos</h4>
-                <a href="https://www.instagram.com/paezelectronicsca/"><i class="fab fa-instagram"></i></a>
+                <h4 data-key="pie_social_titulo">Síguenos</h4>
                 <a href="https://wa.me/17869703327"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.mercadolibre.com.ve/pagina/paezelectronicsllc?item_id=MLV716038550&category_id=MLV122421&seller_id=563986496&client=recoview-selleritems&recos_listing=true"><i class="fas fa-tag"></i></a>
                 <a href="mailto:admin@paezelectronicsllc.com"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
-        <p class="copyright">&copy; 2025 Paez Electronics. Todos los derechos reservados.</p>
+        <p class="copyright" data-key="pie_copyright">&copy; 2025 Paez Electronics LLC. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        // Script de Formspree
-        const form = document.getElementById('cotizacionForm');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            const data = new FormData(form);
-            
-            fetch(form.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = "agradecimiento.html"; 
-                } else {
-                    response.json().then(data => {
-                        alert(data.error || 'Oops! Hubo un problema al enviar.');
-                    })
-                }
-            })
-            .catch(error => {
-                alert('Oops! Hubo un error de conexión. Intente más tarde.');
-            });
-        });
-
-        // INCLUIDO: Script para la funcionalidad del menú móvil
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navPrincipal = document.querySelector('.navegacion-principal');
-            const body = document.body;
-
-            menuToggle.addEventListener('click', function() {
-                navPrincipal.classList.toggle('menu-activo');
-                menuToggle.classList.toggle('menu-activo'); 
-                body.classList.toggle('no-scroll'); 
-            });
-        });
-    </script>
-
+    <script src="../js/idiomas.js"></script> 
+    <script src="../js/menu-responsive.js"></script>
+    <script src="../js/form-cotizar.js"></script> 
 </body>
 </html>
