@@ -96,7 +96,6 @@ a {
 /* BOTONES Y CTAs */
 /* ========================================================= */
 
-/* Solo para botones grandes de contenido */
 .btn-primario, .btn-secundario {
     display: inline-block;
     padding: 16px 40px; 
@@ -109,6 +108,25 @@ a {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
+/* Las clases .btn-cotizar* ahora son enlaces normales de navegación */
+.btn-cotizar, .btn-cotizar-nav-movil, .btn-cotizar-nav {
+    background: transparent;
+    color: var(--color-terciario); 
+    box-shadow: none;
+    padding: 0; 
+    transition: color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-cotizar:hover, .btn-cotizar-nav-movil:hover, .btn-cotizar-nav:hover {
+    background: transparent;
+    color: var(--color-secundario);
+    transform: none;
+    box-shadow: none;
+}
+
 
 .btn-primario {
     background: var(--color-primario);
@@ -125,8 +143,9 @@ a {
 }
 
 .btn-secundario {
-    background: var(--color-secundario);
-    color: var(--fondo-oscuro-base);
+    background: transparent;
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
     margin-top: 35px;
     font-size: 1.1em;
 }
@@ -158,14 +177,11 @@ a {
     display: block;
 }
 
-/* El flex-grow y justify-content centran el menú entre el logo y el idioma */
+/* Permitimos que la navegación crezca y se centre */
 .navegacion-principal { 
-    /* Permitir que el menú ocupe el espacio */
     flex-grow: 1; 
     display: flex;
-    
-    /* Centra los enlaces horizontalmente */
-    justify-content: center; 
+    justify-content: center; /* Centra los enlaces */
 }
 
 .navegacion-principal ul {
@@ -207,7 +223,7 @@ a {
 /* Estilos específicos para el botón Cotizar DENTRO de la navegación */
 .nav-cotizar-item-escritorio .btn-cotizar-nav {
      /* Aseguramos que tenga el mismo padding y reseteamos estilos de botón */
-    padding: 10px 15px !important; 
+    padding: 12px 18px !important; 
     margin-left: 0;
     background: transparent;
     border-radius: 0;
@@ -240,7 +256,7 @@ a {
     transition: all 0.3s;
     text-transform: uppercase;
     font-family: inherit; 
-    line-height: 1; 
+    line-height: 1; /* Para que el texto no afecte el tamaño */
 }
 
 .lang-btn:first-of-type { 
@@ -340,7 +356,7 @@ a {
     color: var(--color-terciario); 
     font-weight: 900;
     line-height: 1.1;
-    white-space: pre-line; 
+    white-space: pre-line; /* Permite el salto de línea para el título traducido */
 }
 
 .contenido-portada p {
@@ -410,7 +426,7 @@ a {
 }
 
 /* ========================================================= */
-/* 6. PIE DE PÁGINA (FOOTER) - VIÑETAS CORRECTAS */
+/* 6. PIE DE PÁGINA (FOOTER) */
 /* ========================================================= */
 
 footer {
@@ -428,6 +444,7 @@ footer .container {
     border-bottom: 1px solid var(--color-primario); 
 }
 
+/* CORRECCIÓN DE ALINEACIÓN VERTICAL */
 .pie-info h3 {
     color: var(--color-terciario);
     margin-top: 0; 
@@ -441,27 +458,23 @@ footer .container {
     margin-bottom: 10px;
 }
 
-/* Estilo de viñeta (puntos sólidos como en inicio) */
+/* CORRECCIÓN DE ESPACIADO DE ENLACES DE LISTA (FUERZA MARGEN 0) */
 .pie-enlaces ul {
-    list-style: disc; /* Puntos sólidos */
-    list-style-position: outside; 
+    list-style: none;
     margin: 0; 
-    /* Padding para que el texto esté cerca del punto */
-    padding-left: 18px; 
+    padding: 0; 
 }
 
 .pie-enlaces ul li {
     margin: 0 !important; 
     padding: 0 !important; 
     line-height: 1.2; 
-    color: var(--color-terciario); 
-    margin-bottom: 5px !important; 
 }
 
 .pie-enlaces a {
     color: var(--color-terciario);
-    display: inline; 
-    padding: 0; 
+    display: block;
+    padding: 5px 0; /* Controla el espaciado vertical ÚNICO */
 }
 
 .pie-enlaces a:hover {
@@ -492,7 +505,7 @@ footer .container {
 }
 
 /* ========================================================= */
-/* RESPONSIVE AJUSTADO A 768px (Menú corregido y ordenado) */
+/* RESPONSIVE AJUSTADO A 768px */
 /* ========================================================= */
 
 @media (max-width: 1200px) {
@@ -506,12 +519,12 @@ footer .container {
     
     .encabezado-principal {
         padding: 15px 20px;
+        /* Asegura que el logo y el toggle estén separados en móvil */
         justify-content: space-between; 
     }
     
     .logo-img {
         max-height: 35px;
-        vertical-align: middle; 
     }
     
     /* Mostrar el toggle */
@@ -531,24 +544,31 @@ footer .container {
     
     /* Configuración del menú desplegable */
     .navegacion-principal {
-        /* Despliegue de Derecha a Izquierda */
-        flex-grow: 0; 
+        /* Restablecer para móvil */
+        justify-content: flex-start; 
+        flex-grow: 0;
+        
+        display: block; 
         position: fixed;
-        top: 65px; /* Comienza debajo del header */
-        right: 0; 
-        left: auto; 
-        width: 100%; 
+        top: 65px;
+        
+        /* Oculto a la derecha del viewport */
+        left: 100vw; 
+        
+        width: 100vw; 
         height: 100vh; 
         background: var(--fondo-oscuro-base); 
-        transform: translateX(100%); 
-        transition: transform 0.4s ease-in-out;
+        
+        /* Transición en 'left' */
+        transition: left 0.4s ease-in-out; 
         z-index: 999; 
         overflow-y: auto; 
     }
 
     /* Estado activo, lo trae a la vista */
     .navegacion-principal.menu-activo {
-        transform: translateX(0); 
+        /* Lo trae al inicio del viewport */
+        left: 0; 
     }
     
     .navegacion-principal ul {
@@ -569,10 +589,10 @@ footer .container {
         background-color: var(--fondo-oscuro-superficie);
     }
     
-    /* 3. COTIZAR: Se comporta como un enlace de lista normal */
+    /* El botón de Cotizar ahora se comporta como un enlace de lista regular */
     .nav-cotizar-item-movil {
         display: block !important; 
-        padding: 0; 
+        padding: 0; /* Sin padding extra */
     }
     
     .nav-cotizar-item-movil a.btn-cotizar-nav-movil {
@@ -584,11 +604,17 @@ footer .container {
         border-bottom: 1px solid var(--fondo-oscuro-superficie);
     }
     
-    /* 4. BOTÓN IDIOMAS: Último elemento con el padding inferior (separación final) */
+    .nav-cotizar-item-movil a.btn-cotizar-nav-movil:hover {
+        background-color: var(--fondo-oscuro-superficie);
+        border-bottom: none;
+    }
+    
+    /* Mostrar el selector de idioma y darle el padding final */
     .nav-idiomas-item-movil {
         display: block !important; 
         width: 100%;
         text-align: center;
+        /* Padding inferior para la separación final */
         padding: 20px 0 30px; 
         border-top: none; 
         border-bottom: 1px solid var(--fondo-oscuro-superficie);
@@ -598,7 +624,7 @@ footer .container {
         display: flex; 
         justify-content: center;
         width: 100%;
-        margin: 0; 
+        margin: 0; /* Quitamos el margen vertical extra */
         padding: 0;
     }
 
@@ -613,10 +639,18 @@ footer .container {
         min-height: 400px;
     }
     
+    .contenido-portada {
+        padding: 0 20px;
+    }
+
     .contenido-portada h1 {
         font-size: 2.2em;
     }
     
+    .contenido-portada p {
+        font-size: 1.1em;
+    }
+
     .seccion-marcas {
         padding: 60px 0;
     }
@@ -625,6 +659,19 @@ footer .container {
         grid-template-columns: 1fr;
         padding: 40px 0;
     }
+    
+    .tarjeta-marca {
+        text-align: center;
+    }
+
+    .logo-marca-full {
+        max-height: 50px; 
+        margin-bottom: 15px; 
+    }
+
+    .contenido-marca {
+        text-align: center;
+    }
 
     footer .container {
         flex-direction: column;
@@ -632,14 +679,16 @@ footer .container {
         text-align: center;
     }
 
-    /* Footer Responsive: Restablecer alineación de viñetas en móvil */
-    .pie-enlaces ul {
-        text-align: left; 
-        margin: 0 auto;
-        padding-left: 20px;
-        width: fit-content; 
+    .pie-info, .pie-enlaces, .pie-social {
+        flex-basis: 100%;
+        margin-bottom: 30px;
     }
-    .pie-enlaces ul li a {
-        display: inline;
+    
+    .pie-enlaces a {
+        text-align: center;
+    }
+    
+    .pie-social a {
+        margin: 0 10px; 
     }
 }
