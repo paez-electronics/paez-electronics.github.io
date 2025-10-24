@@ -94,7 +94,7 @@ const translations = {
     contacto_portada_titulo: { es: 'Hablemos de Automatización', en: 'Let\'s Talk About Automation' },
     contacto_portada_subtitulo: { es: 'Contáctenos para una cotización, soporte técnico o resolver cualquier duda sobre su proyecto industrial.', en: 'Contact us for a quote, technical support, or to resolve any questions about your industrial project.' },
     contacto_info_titulo: { es: 'Información de Contacto y Ubicación', en: 'Contact Information and Location' },
-    contacto_direccion: { es: '17546 Crescent Moon Loop, Bradenton, FL 34211', en: '17546 Crescent Moon Loop, Bradenton, FL 34211' },
+    contacto_direccion: { es: 'Carrera 18 entre Calles 48 y 49 Edif Deitos Piso 2 Ofna 6, Barquisimeto , Lara', en: 'Carrera 18 entre Calles 48 y 49 Edif Deitos Piso 2 Ofna 6, Barquisimeto , Lara' },
     contacto_mercadolibre: { es: 'PAEZELECTRONICSCA (Mercado Libre)', en: 'PAEZELECTRONICSCA (Mercado Libre)' },
     contacto_mapa_titulo: { es: 'Nuestra Ubicación', en: 'Our Location' },
     
